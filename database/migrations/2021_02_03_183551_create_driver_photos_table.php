@@ -14,7 +14,11 @@ class CreateDriverPhotosTable extends Migration
     public function up()
     {
         Schema::create('driver_photos', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->uuid('driver_id');
+            $table->string('profile_pic_path');
+            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

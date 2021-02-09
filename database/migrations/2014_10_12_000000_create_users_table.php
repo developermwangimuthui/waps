@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('county')->nullable();
             $table->string('country')->nullable();
+            $table->boolean('uberSwitch');
             $table->string('last_seen')->nullable();
             $table->string('profile_pic_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();

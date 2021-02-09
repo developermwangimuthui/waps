@@ -16,7 +16,8 @@ class CreateVehiclePhotosTable extends Migration
         Schema::create('vehicle_photos', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('driver_id');
-            $table->string('photo');
+            $table->string('car_front');
+            $table->string('car_back');
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

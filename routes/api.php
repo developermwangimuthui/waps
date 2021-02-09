@@ -22,4 +22,11 @@ Route::prefix('v1')->group(function () {
     Route::post('/forgotpassword', [UserAuthController::class, 'forgot_password']);
     Route::post('/tokenconnfrm', [UserAuthController::class, 'token_connfrm']);
     Route::post('/changePassword', [UserAuthController::class, 'changePassword']);
+
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::post('/updateprofle', [UserAuthController::class, 'updateProfile']);
+    });
 });
+
+
+

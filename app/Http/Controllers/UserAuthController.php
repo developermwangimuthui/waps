@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DriverPhoto;
 use App\PasswordReseting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,12 +14,18 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Support\Facades\File;
 use Hash;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendMail;
+use App\Models\Driver;
+use App\Models\DriverLicense;
+use App\Models\Vehicle;
+use App\Models\VehiclePhoto;
 
 class UserAuthController extends Controller
 {
+    private $imgdestination;
 
 
     //----------------- [ Register user ] -------------------
@@ -26,7 +33,7 @@ class UserAuthController extends Controller
     {
 
         // check if email already registered
-        $user  = User::where('phone', $request->phone)->first();
+        $user = User::where('phone', $request->phone)->first();
         if (!is_null($user)) {
             return response([
                 'error' => true,
@@ -34,20 +41,26 @@ class UserAuthController extends Controller
             ], Response::HTTP_OK);
         } else {
             $user = new User();
-            $user->password =  Hash::make($request->password);
+            $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
+            $user->email = $request->email;
             $user->user_type = $request->user_type;
             $user->first_name = $request->first_name;
             $user->surname = $request->surname;
             $user->country = $request->country;
-            $user->county = $request->county    ;
+            $user->county = $request->county;
+            $user->uberSwitch = $request->uberSwitch;
 
             if ($user->save()) {
-                return response([
-                    'error' => false,
-                    'message' => 'You have registered successfully',
-                    'user' => new UserRegisterResource($user)
-                ], Response::HTTP_CREATED);
+                $driver = new Driver();
+                $driver->user_id = $user->id;
+                if ($driver->save()) {
+                    return response([
+                        'error' => false,
+                        'message' => 'You have registered successfully',
+                        'user' => new UserRegisterResource($user)
+                    ], Response::HTTP_CREATED);
+                }
             }
         }
     }
@@ -90,82 +103,205 @@ class UserAuthController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $rules = [
-            'username'    =>  'unique:users,username',
-        ];
-        $error = Validator::make($request->all(), $rules);
 
-        if ($error->fails()) {
-            return response([
-                'error' => true,
-                'message' => 'The username has already been taken.',
-            ], Response::HTTP_CREATED);
-        } else {
 
-            $user = Auth::user();
-            if ($request->username != null) {
+        $user = Auth::user();
 
-                $user->username =  $request->username;
-            }
-            if ($request->phone != null) {
+        if ($request->phone != null) {
 
-                $user->phone = $request->phone;
-            }
-            if ($request->DOB != null) {
+            $user->phone = $request->phone;
+        }
+        if ($request->email != null) {
 
-                $user->DOB = $request->DOB;
-            }
-            if ($request->gender != null) {
+            $user->email = $request->email;
+        }
+        if ($request->password != null) {
+            $user->password = Hash::make($request->password);
+        }
+        if ($user->update()) {
+            $driver_id = Driver::where('user_id', $user->id)->pluck('id')->first();
+            $vehicle = new Vehicle();
+            $current_number_plate = Vehicle::where('driver_id', $driver_id)->pluck('car_number_plate')->first();
+            $current_car_model = Vehicle::where('driver_id', $driver_id)->pluck('car_model')->first();
+            $current_yom = Vehicle::where('driver_id', $driver_id)->pluck('yom')->first();
+            if ($request->car_number_plate != null && $current_number_plate != '') {
 
-                $user->gender =  $request->gender;
-            }
-            if ($request->about != null) {
+                $vehicle->where('driver_id', $driver_id)->update([
+                    'car_number_plate' => $request->car_number_plate,
+                ]);
 
-                $user->about = $request->about;
-            }
-            if ($request->firstname != null) {
-
-                $user->firstname = $request->firstname;
-            }
-            if ($request->lastname != null) {
-
-                $user->lastname = $request->lastname;
-            }
-
-            if ($request->password != null) {
-                $user->password = Hash::make($request->password);
-            }
-
-            if ($request->profile_pic_path != null && $request->profile_pic_path != '') {
-                if ($this->validateString($request->profile_pic_path)) {  // return $request->profile_pic_path ;
-
-                    $user->profile_pic_path = $this->moveUploadedFile($request->profile_pic_path, "UserProfilePics");
-                } else {
-                    return response([
-                        'error' => true,
-                        'message' => 'invalid base64 image string!',
-                    ], Response::HTTP_CREATED);
-                }
-            }
-            if ($user->update()) {
-
+            } elseif ($request->car_number_plate == null) {
                 return response([
-                    'error' => false,
-                    'message' => 'Profile updated successfully',
-                    'user' => new UserLoginResoure($user)
+                    'error' => true,
+                    'message' => 'The car number plate is required.',
                 ], Response::HTTP_CREATED);
+            } elseif ($request->car_model != null && $current_car_model != '') {
+                $vehicle->where('driver_id', $driver_id)->update([
+                    'car_model' => $request->car_model,
+                ]);
+//                $vehicle->car_model = $request->car_model;
+            } elseif ($request->car_model == null) {
+                return response([
+                    'error' => true,
+                    'message' => 'The car model plate is required.',
+                ], Response::HTTP_CREATED);
+            } elseif ($request->yom != null && $current_yom != '') {
+                $vehicle->where('driver_id', $driver_id)->update([
+                    'yom' => $request->yom,
+                ]);
+//                $vehicle->yom = $request->yom;
+            } elseif ($request->yom == null) {
+                return response([
+                    'error' => true,
+                    'message' => 'The Year of Manufacture plate is required.',
+                ], Response::HTTP_CREATED);
+            } else {
+
+                $vehicle->car_number_plate = $request->car_number_plate;
+                $vehicle->driver_id = $driver_id;
+                $vehicle->yom = $request->yom;
+                $vehicle->car_model = $request->car_model;
+                $vehicle->save();
+
+            }
+        }
+
+        $vehicle_photo = new VehiclePhoto();
+
+        $current_front_vehicle_photo = VehiclePhoto::where('driver_id', $driver_id)->pluck('car_front')->first();
+        $current_back_vehicle_photo = VehiclePhoto::where('driver_id', $driver_id)->pluck('car_back')->first();
+
+        if ($request->front_vehicle_photo != null && $current_front_vehicle_photo != '') {
+            if ($request->hasfile('front_vehicle_photo')) {
+                // foreach ($request->file('upl') as $image) {
+                $front_vehicle_photo = $request->file('front_vehicle_photo');
+
+                $imgdestination = '/CarFrontPhotos';
+                $imgname = $this->generateUniqueFileName($front_vehicle_photo, $imgdestination);
+                $vehicle_photo->where('driver_id', $driver_id)->update([
+                    'car_front' => $imgname,
+                ]);
             }else {
                 return response([
                     'error' => true,
-                    'message' => 'Failed to update profile',
-                ], Response::HTTP_CREATED);            }
+                    'message' => 'invalid base64 image string for Car Front Photos!',
+                ], Response::HTTP_CREATED);
+            }
+        } elseif ($request->back_vehicle_photo != null && $current_back_vehicle_photo != '') {
+            if ($request->hasfile('back_vehicle_photo')) {
+                // foreach ($request->file('upl') as $image) {
+                $back_vehicle_photo = $request->file('back_vehicle_photo');
+
+                $imgdestination = '/CarBackPhotos';
+                $imgname = $this->generateUniqueFileName($back_vehicle_photo, $imgdestination);
+                $vehicle_photo->where('driver_id', $driver_id)->update([
+                    'car_back' => $imgname,
+                ]);
+            } else {
+                return response([
+                    'error' => true,
+                    'message' => 'Car Back Photos is required !',
+                ], Response::HTTP_CREATED);
+            }
+        } else {
+
+            $vehicle_photo->car_front = $this->moveUploadedFile($request->front_vehicle_photo, "CarFrontPhotos");;
+            $vehicle_photo->car_back = $this->moveUploadedFile($request->back_vehicle_photo, "CarBackPhotos");
+            $vehicle_photo->driver_id = $driver_id;
+            $vehicle_photo->save();
+
         }
+
+        $driver_licence = new DriverLicense();
+
+        $current_driver_license_front = DriverLicense::where('driver_id', $driver_id)->pluck('front_license')->first();
+        $current_driver_license_back = DriverLicense::where('driver_id', $driver_id)->pluck('back_license')->first();
+
+        if ($request->front_license != null && $current_driver_license_front != '') {
+            if ($request->hasfile('front_license')) {
+                // foreach ($request->file('upl') as $image) {
+                $front_license = $request->file('front_license');
+
+                $imgdestination = '/DriverFrontLicense';
+                $imgname = $this->generateUniqueFileName($front_license, $imgdestination);
+                $driver_licence->where('driver_id', $driver_id)->update([
+                    'front_license' => $imgname,
+                ]);
+            }else {
+                return response([
+                    'error' => true,
+                    'message' => 'Driver Front License is required!',
+                ], Response::HTTP_CREATED);
+            }
+        } elseif ($request->back_license != null && $current_driver_license_back != '') {
+            if ($request->hasfile('back_license')) {
+                // foreach ($request->file('upl') as $image) {
+                $back_license = $request->file('back_license');
+
+                $imgdestination = '/DriverBackLicense';
+                $imgname = $this->generateUniqueFileName($back_license, $imgdestination);
+                $driver_licence->where('driver_id', $driver_id)->update([
+                    'back_license' => $imgname,
+                ]);
+            } else {
+                return response([
+                    'error' => true,
+                    'message' => 'Driver back License is required!',
+                ], Response::HTTP_CREATED);
+            }
+        } else {
+            $driver_licence->front_license = $this->moveUploadedFile($request->front_vehicle_photo, "DriverFrontLicense");;
+            $driver_licence->back_license = $this->moveUploadedFile($request->back_vehicle_photo, "DriverBackLicense");
+            $driver_licence->driver_id = $driver_id;
+            $driver_licence->save();
+
+        }
+
+
+        $driver_photo = new DriverPhoto();
+
+
+        $imgdestination = '/DriverPhotos';
+        $current_driver_photo = DriverPhoto::where('driver_id', $driver_id)->pluck('profile_pic_path')->first();
+
+        if ($request->profile_pic_path != null && $current_driver_photo != '') {
+
+            if ($request->hasfile('profile_pic_path')) {
+                // foreach ($request->file('upl') as $image) {
+                $profile_pic_path = $request->file('profile_pic_path');
+                $imgname = $this->generateUniqueFileName($profile_pic_path, $imgdestination);
+                $driver_photo->where('driver_id', $driver_id)->update([
+                    'profile_pic_path' => $imgname,
+                ]);
+            } else {
+                return response([
+                    'error' => true,
+                    'message' => 'Driver Front License is required!',
+                ], Response::HTTP_CREATED);
+            }
+        } else {
+            $driver_photo->profile_pic_path = $this->moveUploadedFile($request->profile_pic_path, "DriverPhotos");
+            $driver_photo->driver_id = $driver_id;
+            $driver_photo->save();
+
+        }
+
+        $profileDetais = Driver::with('driverPhotos','vehicles','driverLicenses','user')->where('drivers.user_id',Auth::user()->id)->get();
+        dd($profileDetais);
+
+        return response([
+            'error' => false,
+            'message' => 'Profile updated successfully',
+//                'user' => new UserLoginResoure($user)
+        ], Response::HTTP_CREATED);
+
     }
+
 
     public function forgot_password(Request $request)
     {
         $rules = [
-            'phone'    =>  'required|phone',
+            'phone' => 'required|phone',
         ];
         // $error = Validator::make($request->all(), $rules);
         $password = str_random(4);
@@ -183,11 +319,11 @@ class UserAuthController extends Controller
 
         $status = PasswordReseting::where('phone', $request->phone)->count();
         if ($status > 0) {
-            $pass =  PasswordReseting::where('phone', $request->phone)->first();
+            $pass = PasswordReseting::where('phone', $request->phone)->first();
             $pass->phone = $request->phone;
             $pass->token = $token;
             $data = [
-                'token'      =>  $token,
+                'token' => $token,
             ];
             if ($pass->update()) {
 
@@ -249,7 +385,7 @@ class UserAuthController extends Controller
             $pass->phone = $request->phone;
             $pass->token = $token;
             $data = [
-                'token'      =>  $token,
+                'token' => $token,
             ];
             if ($pass->save()) {
                 $password_update = User::where('phone', $request->phone)->update([
@@ -292,11 +428,12 @@ class UserAuthController extends Controller
         // }
 
     }
+
     public function token_connfrm(Request $request)
     {
         $rules = [
-            'email'    =>  'required|email',
-            'token'    =>  'required',
+            'email' => 'required|email',
+            'token' => 'required',
         ];
         $error = Validator::make($request->all(), $rules);
 
@@ -317,11 +454,12 @@ class UserAuthController extends Controller
             }
         }
     }
+
     public function changePassword(Request $request)
     {
         $rules = [
-            'email'    =>  'required|email',
-            'password'    =>  'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ];
         $error = Validator::make($request->all(), $rules);
 
@@ -345,35 +483,17 @@ class UserAuthController extends Controller
     }
 
 
-    public function moveUploadedFile($param, $folder)
-    {
-        $image = str_replace('data:image/png;base64,', '', $param);
-        $image = str_replace(' ', '+', $image);
-        $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
-        $imageName = sprintf('%s.%0.8s', $basename, "png");
 
-        $filePath = $folder . "/" . $imageName;
-        // return Storage::disk('local')->put($filePath, $uploadedFile_base64) ? $filePath : false;
-        //check if the directory exists
-        if (!File::isDirectory($folder)) {
-            //make the directory because it doesn't exists
-            File::makeDirectory($folder);
-        }
-        if (\File::put(public_path() . '/' . $filePath, base64_decode($image))) {
-            return $imageName;
+
+
+    public function generateUniqueFileName($image, $destinationPath)
+    {
+        $initial = "waps_";
+        $name = $initial . Str::random() . time() . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
+            return $name;
         } else {
             return null;
-        }
-    }
-
-    //function to validate base64 string
-
-    public function validateString($s)
-    {
-        if (preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s) && base64_decode($s, true)) {
-            return true;
-        } else {
-            return false;
         }
     }
 }
