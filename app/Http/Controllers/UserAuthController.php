@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProfileDetail;
 use App\Models\DriverPhoto;
 use App\PasswordReseting;
 use Illuminate\Http\Request;
@@ -25,9 +26,6 @@ use App\Models\VehiclePhoto;
 
 class UserAuthController extends Controller
 {
-    private $imgdestination;
-
-
     //----------------- [ Register user ] -------------------
     public function registerUser(UserRegisterRequest $request)
     {
@@ -184,7 +182,7 @@ class UserAuthController extends Controller
             }else {
                 return response([
                     'error' => true,
-                    'message' => 'invalid base64 image string for Car Front Photos!',
+                    'message' => ' Car Front Photos is required!',
                 ], Response::HTTP_CREATED);
             }
         } elseif ($request->back_vehicle_photo != null && $current_back_vehicle_photo != '') {
@@ -287,12 +285,13 @@ class UserAuthController extends Controller
         }
 
         $profileDetais = Driver::with('driverPhotos','vehicles','driverLicenses','user')->where('drivers.user_id',Auth::user()->id)->get();
-        dd($profileDetais);
+        $profileDetais =ProfileDetail::collection($profileDetais);
+//        dd($profileDetais);
 
         return response([
             'error' => false,
             'message' => 'Profile updated successfully',
-//                'user' => new UserLoginResoure($user)
+                'profileDetail' => $profileDetais
         ], Response::HTTP_CREATED);
 
     }
