@@ -49,7 +49,7 @@ class UserAuthController extends Controller
             $user->surname = $request->surname;
             $user->country = $request->country;
             $user->county = $request->county;
-            $user->uberSwitch = $request->uberSwitch;
+            $user->uberSwitch = $request->uberSwitch==true?1:0;
 
             if ($user->save()) {
                 $driver = new Driver();
