@@ -234,9 +234,9 @@ class UserAuthController extends Controller
                 $front_license = $request->file('front_license');
 
                 $imgdestination = '/DriverFrontLicense';
-                $imgname = $this->generateUniqueFileName($front_license, $imgdestination);
+                $front_license = $this->generateUniqueFileName($front_license, $imgdestination);
                 $driver_licence->where('driver_id', $driver_id)->update([
-                    'front_license' => $imgname,
+                    'front_license' => $front_license,
                 ]);
             } else {
                 return response([
@@ -250,9 +250,9 @@ class UserAuthController extends Controller
                 $back_license = $request->file('back_license');
 
                 $imgdestination = '/DriverBackLicense';
-                $imgname = $this->generateUniqueFileName($back_license, $imgdestination);
+                $back_license = $this->generateUniqueFileName($back_license, $imgdestination);
                 $driver_licence->where('driver_id', $driver_id)->update([
-                    'back_license' => $imgname,
+                    'back_license' => $back_license,
                 ]);
             } else {
                 return response([
@@ -261,8 +261,18 @@ class UserAuthController extends Controller
                 ], Response::HTTP_CREATED);
             }
         } else {
-            $driver_licence->front_license = $this->moveUploadedFile($request->front_vehicle_photo, "DriverFrontLicense");;
-            $driver_licence->back_license = $this->moveUploadedFile($request->back_vehicle_photo, "DriverBackLicense");
+
+            $front_license = $request->file('front_license');
+
+            $imgdestination = '/DriverFrontLicense';
+            $front_license = $this->generateUniqueFileName($front_license, $imgdestination);
+
+            $back_license = $request->file('back_license');
+
+            $imgdestination = '/DriverBackLicense';
+            $back_license = $this->generateUniqueFileName($back_license, $imgdestination);
+            $driver_licence->front_license = $front_license;
+            $driver_licence->back_license = $back_license;
             $driver_licence->driver_id = $driver_id;
             $driver_licence->save();
 
@@ -280,9 +290,9 @@ class UserAuthController extends Controller
             if ($request->hasfile('profile_pic_path')) {
                 // foreach ($request->file('upl') as $image) {
                 $profile_pic_path = $request->file('profile_pic_path');
-                $imgname = $this->generateUniqueFileName($profile_pic_path, $imgdestination);
+                $profile_pic_path = $this->generateUniqueFileName($profile_pic_path, $imgdestination);
                 $driver_photo->where('driver_id', $driver_id)->update([
-                    'profile_pic_path' => $imgname,
+                    'profile_pic_path' => $profile_pic_path,
                 ]);
             } else {
                 return response([
@@ -291,7 +301,10 @@ class UserAuthController extends Controller
                 ], Response::HTTP_CREATED);
             }
         } else {
-            $driver_photo->profile_pic_path = $this->moveUploadedFile($request->profile_pic_path, "DriverPhotos");
+
+            $profile_pic_path = $request->file('profile_pic_path');
+            $profile_pic_path = $this->generateUniqueFileName($profile_pic_path, $imgdestination);
+            $driver_photo->profile_pic_path = $profile_pic_path;
             $driver_photo->driver_id = $driver_id;
             $driver_photo->save();
 
