@@ -44,12 +44,12 @@ class UserAuthController extends Controller
             $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
             $user->email = $request->email;
-            $user->user_type = $request->user_type;
+            $user->user_type = $request->user_type=="driver"?2:3;
             $user->first_name = $request->first_name;
             $user->surname = $request->surname;
             $user->country = $request->country;
             $user->county = $request->county;
-            $user->uberSwitch = $request->uberSwitch==true?1:0;
+            $user->uberSwitch = 2;
 
             if ($user->save()) {
                 $driver = new Driver();
