@@ -2861,14 +2861,23 @@ strong {
     right: 4px;
     border-radius: 100%;
     border: 1px solid #fff; }
-  .avatars .avatar .status {
+  .avatars .avatar .status-online {
     position: absolute;
-    height: 12%;
-    width: 12%;
+    height: 30%;
+    width: 30%;
     background-color: #51bb25;
     border-radius: 100%;
     bottom: 12%;
     right: 4%; }
+  .avatars .avatar .status-offline {
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    background-color: #dc3545;
+    border-radius: 100%;
+    bottom: 12%;
+    right: 4%; }
+
 
 .customers ul {
   display: inline-block; }

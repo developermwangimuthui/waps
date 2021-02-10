@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Shetabit\Visitor\Traits\Visitor;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,HasApiTokens,SoftDeletes;
+    use HasFactory, Notifiable,HasApiTokens,SoftDeletes,Visitor;
 
     /**
      * The attributes that are mass assignable.
@@ -46,4 +47,6 @@ class User extends Authenticatable
     public function drivers(){
         return $this->hasMany(Driver::class);
     }
+
+
 }

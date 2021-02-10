@@ -4,14 +4,83 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Driver;
+use App\Models\User;
 
 class DriverController extends Controller
 {
 
     public function index(Request $request)
     {
-        $drivers = Driver::with('driverPhotos','vehicles','driverLicenses','user')->get();
-        
-        return view('driver.index');
+        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->get();
+        $onlineDrivers = $this->onlineDrivers();
+        $onlineDriverscount = $this->onlineDriversCount();
+        $offlineDriverscount = $this->offlineDriversCount();
+        $allDriversCount = $this->allDriversCount();
+        $newDriverRequests = $this->newDriverRequests();
+        $newDriverRequestsCount = $this->newDriverRequestsCount();
+
+        return view('driver.index', compact('drivers', 'onlineDriverscount', 'offlineDriverscount', 'allDriversCount', 'newDriverRequests', 'newDriverRequestsCount'));
+    }
+
+    public function show(Request $request, $driver_id)
+    {
+
+        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->where([
+            ['drivers.id','=',$driver_id],
+            ['drivers.status','=',1],
+        ])->get();
+        return view('driver.show', compact('drivers'));
+    }
+
+    //Count all Drivers
+    public function allDriversCount()
+    {
+        return User::with('drivers')->where([
+            ['user_type', '=', 2],
+            ['status', '=', 1],
+        ])->count();
+    }
+    //Count online Drivers
+    public function onlineDriversCount()
+    {
+        return User::with('drivers')
+            ->where([
+                ['user_type', '=', 2],
+                ['status', '=', 1],
+            ])->online()
+            ->count();
+    }
+    //Count offline Drivers
+    public function offlineDriversCount()
+    {
+        return User::with('drivers')->where([
+            ['user_type', '=', 2],
+            ['status', '=', 1],
+        ])->count() - $this->onlineDriversCount();
+    }
+    //Count online Drivers
+    public function onlineDrivers()
+    {
+        return User::with('drivers')->where([
+            ['user_type', '=', 2],
+            ['status', '=', 1],
+        ])
+            ->online()
+            ->get();
+    }
+
+    public function newDriverRequestsCount()
+    {
+        return User::with('drivers')->where([
+            ['user_type', '=', 2],
+            ['status', '=', 0],
+        ])->count();
+    }
+    public function newDriverRequests()
+    {
+        return User::with('drivers')->where([
+            ['user_type', '=', 2],
+            ['status', '=', 0],
+        ])->get();
     }
 }
