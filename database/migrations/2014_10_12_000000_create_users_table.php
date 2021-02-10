@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('county')->nullable();
             $table->string('country')->nullable();
             $table->boolean('uberSwitch');
-            $table->string('last_seen')->nullable();
+            $table->integer('status')->default(0);
             $table->string('profile_pic_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

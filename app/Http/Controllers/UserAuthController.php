@@ -47,11 +47,14 @@ class UserAuthController extends Controller
             $user->surname = $request->surname;
             $user->country = $request->country;
             $user->county = $request->county;
-            $user->uberSwitch = $request->uberSwitch==true?1:0;
+            $user->uberSwitch = $request->uberSwitch == true ? 1 : 0;
 
             if ($user->save()) {
                 $driver = new Driver();
                 $driver->user_id = $user->id;
+                //Create a log that the user has visited the site
+                visitor()->visit();
+
                 if ($driver->save()) {
                     return response([
                         'error' => false,
@@ -79,6 +82,8 @@ class UserAuthController extends Controller
 
                 // getting auth user after auth login
                 $user = Auth::user();
+                //Create a log that the user has visited the site
+                visitor()->visit();
                 return response([
                     'error' => false,
                     'message' => 'Success! you are logged in successfully',
@@ -175,25 +180,25 @@ class UserAuthController extends Controller
                 $front_vehicle_photo = $request->file('front_vehicle_photo');
 
                 $imgdestination = '/CarFrontPhotos';
-                $imgname = $this->generateUniqueFileName($front_vehicle_photo, $imgdestination);
+                $car_front_photos = $this->generateUniqueFileName($front_vehicle_photo, $imgdestination);
                 $vehicle_photo->where('driver_id', $driver_id)->update([
-                    'car_front' => $imgname,
+                    'car_front' => $car_front_photos,
                 ]);
-            }else {
+            } else {
                 return response([
                     'error' => true,
                     'message' => ' Car Front Photos is required!',
                 ], Response::HTTP_CREATED);
             }
         } elseif ($request->back_vehicle_photo != null && $current_back_vehicle_photo != '') {
+
             if ($request->hasfile('back_vehicle_photo')) {
-                // foreach ($request->file('upl') as $image) {
                 $back_vehicle_photo = $request->file('back_vehicle_photo');
 
                 $imgdestination = '/CarBackPhotos';
-                $imgname = $this->generateUniqueFileName($back_vehicle_photo, $imgdestination);
+                $car_back_photos = $this->generateUniqueFileName($back_vehicle_photo, $imgdestination);
                 $vehicle_photo->where('driver_id', $driver_id)->update([
-                    'car_back' => $imgname,
+                    'car_back' => $car_back_photos,
                 ]);
             } else {
                 return response([
@@ -203,8 +208,16 @@ class UserAuthController extends Controller
             }
         } else {
 
-            $vehicle_photo->car_front = $this->moveUploadedFile($request->front_vehicle_photo, "CarFrontPhotos");;
-            $vehicle_photo->car_back = $this->moveUploadedFile($request->back_vehicle_photo, "CarBackPhotos");
+            $front_vehicle_photo = $request->file('front_vehicle_photo');
+
+            $imgdestination = '/CarFrontPhotos';
+            $car_front_photos = $this->generateUniqueFileName($front_vehicle_photo, $imgdestination);
+            $back_vehicle_photo = $request->file('back_vehicle_photo');
+
+            $imgdestination = '/CarBackPhotos';
+            $car_back_photos = $this->generateUniqueFileName($back_vehicle_photo, $imgdestination);
+            $vehicle_photo->car_front =  $car_front_photos;
+            $vehicle_photo->car_back =$car_back_photos;
             $vehicle_photo->driver_id = $driver_id;
             $vehicle_photo->save();
 
@@ -225,7 +238,7 @@ class UserAuthController extends Controller
                 $driver_licence->where('driver_id', $driver_id)->update([
                     'front_license' => $imgname,
                 ]);
-            }else {
+            } else {
                 return response([
                     'error' => true,
                     'message' => 'Driver Front License is required!',
@@ -284,14 +297,14 @@ class UserAuthController extends Controller
 
         }
 
-        $profileDetais = Driver::with('driverPhotos','vehicles','driverLicenses','user')->where('drivers.user_id',Auth::user()->id)->get();
-        $profileDetais =ProfileDetail::collection($profileDetais);
+        $profileDetais = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->where('drivers.user_id', Auth::user()->id)->get();
+        $profileDetais = ProfileDetail::collection($profileDetais);
 //        dd($profileDetais);
 
         return response([
             'error' => false,
             'message' => 'Profile updated successfully',
-                'profileDetail' => $profileDetais
+            'profileDetail' => $profileDetais
         ], Response::HTTP_CREATED);
 
     }
@@ -480,9 +493,6 @@ class UserAuthController extends Controller
             }
         }
     }
-
-
-
 
 
     public function generateUniqueFileName($image, $destinationPath)

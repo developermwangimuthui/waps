@@ -5,55 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6d05ced-b385-47d9-95c7-07c74b039139" name="Default Changelist" comment="Update profile complete">
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/ProfileDetail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_2WqDZ9ENinzaBN1L1612891931.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_84ueOV1MDmiZygto1612892571.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_8Jr5ziC3t4QYTkdC1612892094.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_E2SbmVZw7D8O1tgB1612892119.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_JgyJ8ubNqwJkhD571612892064.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_L2tZa59ywWnuMnve1612892554.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_NHAeaqag6mlTnsS91612892177.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_Rzh6NrUaeVubQRfs1612892213.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_hEcrtgRGlwef0Pqv1612892859.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_lIrKEWBvTtRq3KZ51612892045.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_nVCq0SehYvoqVoLB1612892140.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/CarFrontPhotos/waps_q5FLj1he56vF5sYp1612892704.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_6lbwvjq8Mk7Z9VJ21612892094.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_CDJScQXz5VIBXa011612891932.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_LKvFjfLildrqbFam1612892859.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_O7h6J41xeJz9dvyN1612892119.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_QVsr0CYmUN93at0s1612892704.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_SZq4J1tinb3PIjGW1612892571.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_TXd34YJ70xt7sxWh1612892554.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_YAI7fZlDRCweCwQq1612892064.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_agNfoCXMz0r4PWMn1612892213.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_eiVZqltZLsQEY9ua1612892045.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_gOzn9w6EotlCAuha1612892140.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverFrontLicense/waps_wYiSInOHHccT83Dw1612892177.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_0rN2fiRXjEbKTCO11612892213.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_4zXXiYPEZvxndNCk1612892045.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_904lrnaq3QwbSuiS1612892094.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_C0Kk0dQlMLw7RfmL1612892571.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_DXz6Xt4Vc1saIBww1612892064.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_GD4RzeEKnm8WQNaP1612892554.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_KVR2z9WobDE0Ej7v1612892177.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_Nn3lAnV9CXBhpOmk1612891932.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_OfwrKaVWWsdWCrSv1612892859.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_bxPsGgG5egah9KLl1612892119.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_dgUmsj8A99oOSCxg1612892704.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/DriverPhotos/waps_t3EDdsFAOwcygQPx1612892140.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/LastActivityUser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/visitor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_14_110318_create_visits_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/waps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/waps.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DriverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DriverController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserAuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Campaign.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Campaign.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CampaignVehicle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CampaignVehicle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Vehicle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vehicle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/VehiclePhoto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/VehiclePhoto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/landing/title.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/landing/title.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/login/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/login/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/login/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/login/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/login/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/login/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/driver/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/driver/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -189,6 +166,12 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/shetabit/visitor" />
+      <path value="$PROJECT_DIR$/vendor/ua-parser/uap-php" />
+      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
+      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oFHXq9NLkdjsFqBZnevknnj8yD" />
@@ -223,6 +206,7 @@
       <option name="presentableId" value="Default" />
       <updated>1612875465111</updated>
       <workItem from="1612875468373" duration="13385000" />
+      <workItem from="1612949561978" duration="2999000" />
     </task>
     <task id="LOCAL-00001" summary="Update profile complete">
       <created>1612891181965</created>
@@ -247,6 +231,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

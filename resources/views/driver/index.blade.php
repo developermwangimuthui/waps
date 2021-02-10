@@ -5,7 +5,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Default</h3>
+                        <h3>Driver Information</h3>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">
@@ -26,56 +26,60 @@
                             <div class="row m-0 chart-main">
                                 <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
                                     <div class="media align-items-center">
-                                        <div class="hospital-small-chart">
-                                            <div class="small-bar">
-                                                <div class="small-chart flot-chart-container"></div>
+                                        <div class="avatars">
+                                            <div class="avatar"><img class="img-100 rounded-circle"
+                                                    src="../assets/images/user/1.jpg" alt="#">
+                                                <div class="status-online"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                <h4>1001</h4><span>purchase </span>
+                                                <h4>{{ $onlineDriverscount }}</h4><span>Online </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
                                     <div class="media align-items-center">
-                                        <div class="hospital-small-chart">
-                                            <div class="small-bar">
-                                                <div class="small-chart1 flot-chart-container"></div>
+                                        <div class="avatars">
+                                            <div class="avatar"><img class="img-100 rounded-circle"
+                                                    src="../assets/images/user/1.jpg" alt="#">
+                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                <h4>1005</h4><span>Sales</span>
+                                                <h4>{{ $offlineDriverscount }}</h4><span>Offline</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
                                     <div class="media align-items-center">
-                                        <div class="hospital-small-chart">
-                                            <div class="small-bar">
-                                                <div class="small-chart2 flot-chart-container"></div>
+                                        <div class="avatars">
+                                            <div class="avatar"><img class="img-100 rounded-circle"
+                                                    src="../assets/images/user/1.jpg" alt="#">
+                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                <h4>100</h4><span>Sales return</span>
                                             </div>
+                                            <h4>{{ $allDriversCount }}</h4><span>Total Drivers</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-6 col-sm-6 p-0 box-col-6">
                                     <div class="media border-none align-items-center">
-                                        <div class="hospital-small-chart">
-                                            <div class="small-bar">
-                                                <div class="small-chart3 flot-chart-container"></div>
+                                        <div class="avatars">
+                                            <div class="avatar"><img class="img-100 rounded-circle"
+                                                    src="../assets/images/user/1.jpg" alt="#">
+                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                <h4>101</h4><span>Purchase ret</span>
+                                                <h4>{{ $newDriverRequestsCount }}</h4><span>New Driver Request</span>
                                             </div>
                                         </div>
                                     </div>
@@ -138,13 +142,9 @@
                             <div class="card">
                                 <div class="card-header card-no-border">
                                     <div class="header-top">
-                                        <h5 class="m-0">appointment</h5>
+                                        <h5 class="m-0">New Drivers Request</h5>
                                         <div class="card-header-right-icon">
-                                            <select class="button btn btn-primary">
-                                                <option>Today</option>
-                                                <option>Tomorrow</option>
-                                                <option>Yesterday</option>
-                                            </select>
+
                                         </div>
                                     </div>
                                 </div>
@@ -152,38 +152,43 @@
                                     <div class="appointment-table table-responsive">
                                         <table class="table table-bordernone">
                                             <tbody>
-                                                <tr>
-                                                    <td><img class="img-fluid img-40 rounded-circle mb-3"
-                                                            src="/assets/images/appointment/app-ent.jpg"
-                                                            alt="Image description">
-                                                        <div class="status-circle bg-primary"></div>
-                                                    </td>
-                                                    <td class="img-content-box"><span class="d-block">Venter
-                                                            Loren</span><span class="font-roboto">Now</span></td>
-                                                    <td>
-                                                        <p class="m-0 font-primary">28 Sept</p>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <div class="button btn btn-primary">Done<i
-                                                                class="fa fa-check-circle ms-2"></i></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img class="img-fluid img-40 rounded-circle"
-                                                            src="/assets/images/appointment/app-ent.jpg"
-                                                            alt="Image description">
-                                                        <div class="status-circle bg-primary"></div>
-                                                    </td>
-                                                    <td class="img-content-box"><span class="d-block">John Loren</span><span
-                                                            class="font-roboto">11:00</span></td>
-                                                    <td>
-                                                        <p class="m-0 font-primary">22 Sept</p>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <div class="button btn btn-danger">Pending<i
-                                                                class="fa fa-check-circle ms-2"></i></div>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($newDriverRequests as $driver)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="avatars">
+                                                                <div class="avatar">
+                                                                    @php
+                                                                        $driver_id = $driver->drivers[0]->id;
+                                                                        $image = \App\Models\DriverPhoto::where('driver_id', $driver_id)
+                                                                            ->pluck('profile_pic_path')
+                                                                            ->first();
+                                                                    @endphp
+
+                                                                    <img class="img-50 rounded-circle table-img"
+                                                                        src="{{ URL::to('/') }}/DriverPhotos/{{ $image }}"
+                                                                        alt="{{ $driver->first_name }}">
+                                                                    <div
+                                                                        class="{{ $driver->isOnline() ? 'status-online ' : 'status-offline' }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="img-content-box"><span
+                                                                class="d-block">{{ $driver->first_name }}
+                                                                &nbsp;{{ $driver->surname }}
+                                                        </td>
+                                                        <td>
+                                                            <p class="m-0 font-primary">
+                                                                {{ $driver->created_at->format('d M, yy') }}</p>
+                                                        </td>
+                                                        <td class="text-end"><a
+                                                                href="{{ route('driver.show', $driver->drivers[0]->id) }}"><i
+                                                                    data-feather="eye">View</i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -252,7 +257,64 @@
                         </div>
                     </div>
                 </div>
-{{-- table here --}}
+
+
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Drivers</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="display dataTable" id="basic-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Contacts</th>
+                                            <th>Vehicle</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($drivers as $driver)
+                                            <tr>
+                                                <td>
+                                                    <div class="avatars">
+                                                        <div class="avatar"><img class="img-50 rounded-circle table-img"
+                                                                src="{{ URL::to('/') }}/DriverPhotos/{{ $driver->driverPhotos->pluck('profile_pic_path')->first() }}"
+                                                                alt="{{ $driver->user->first_name }}">
+                                                            <div
+                                                                class="{{ $driver->user->isOnline() ? 'status-online ' : 'status-offline' }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $driver->user->first_name }} &nbsp;{{ $driver->user->surname }}
+                                                </td>
+                                                <td>Email: &nbsp;{{ $driver->user->email }} <br> Phone:
+                                                    &nbsp;{{ $driver->user->phone }}</td>
+                                                <td>{{ $driver->vehicles[0]->car_number_plate }}</td>
+                                                <td><a href="{{ route('driver.show', $driver->id) }}"><i
+                                                            data-feather="eye">View</i></a></td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Contacts</th>
+                                            <th>Vehicle</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Container-fluid Ends-->
