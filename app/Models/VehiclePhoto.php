@@ -10,4 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class VehiclePhoto extends Model
 {
     use HasFactory,SoftDeletes,UsesUUID;
+
+    public function vehicles(){
+        return $this->belongsTo(Vehicle::class);
+    }
 }

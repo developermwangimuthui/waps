@@ -10,4 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class CampaignVehicle extends Model
 {
     use HasFactory,SoftDeletes,UsesUUID;
+
+    public function campaigns(){
+        return $this->belongsTo(Campaign::class);
+    }
 }

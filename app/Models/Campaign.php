@@ -11,4 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Campaign extends Model
 {
     use HasFactory,SoftDeletes,UsesUUID;
+    public function campaignVehicles(){
+        return $this->hasMany(CampaignVehicle::class);
+    }
 }
