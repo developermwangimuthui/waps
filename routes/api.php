@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\DistanceController;
+use App\Http\Controllers\TravelHistoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,6 +26,8 @@ Route::prefix('v1')->group(function () {
 
     Route::group(['middleware' => ['auth:api']], function () {
         Route::post('/updateprofle', [UserAuthController::class, 'updateProfile']);
+
+        Route::post('/location',[TravelHistoryController::class, 'getLongitudeLatitude']);
     });
 });
 

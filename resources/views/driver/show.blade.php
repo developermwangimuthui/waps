@@ -6,13 +6,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-6">
-                            <h3>User Cards</h3>
+                            <h3>Driver Details</h3>
                         </div>
                         <div class="col-6">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index-2.html"> <i data-feather="home"></i></a></li>
                                 <li class="breadcrumb-item">Users</li>
-                                <li class="breadcrumb-item active">User Cards</li>
+                                <li class="breadcrumb-item active">{{ $driver->user->first_name }} &nbsp;{{ $driver->user->surname }}</li>
                             </ol>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
             </div>
             <!-- Container-fluid Ends-->

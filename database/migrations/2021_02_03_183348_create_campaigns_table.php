@@ -19,6 +19,7 @@ class CreateCampaignsTable extends Migration
             $table->string('name');
             $table->string('goal');
             $table->integer('status');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

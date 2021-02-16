@@ -34,10 +34,15 @@
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('driver.index')}}"><i
                                 data-feather="git-pull-request"> </i><span>Drivers</span></a></li>
-                    <li class="sidebar-list">
-                        <label class="badge badge-info">Latest </label><a class="sidebar-link sidebar-title link-nav"
-                            href="kanban.html"><i data-feather="monitor"> </i><span>Customers</span></a>
-                    </li>
+
+                                <li class="sidebar-list">
+                                    <label class="badge badge-danger">New</label><a class="sidebar-link sidebar-title" href="#"><i
+                                            data-feather="box"></i><span>Customers </span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{route('customer.create')}}">Add Customers</a></li>
+                                        <li><a href="{{route('customer.index')}}">Customer List </a></li>
+                                    </ul>
+                                </li>
 
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                                 data-feather="users"></i><span>Users</span></a>
