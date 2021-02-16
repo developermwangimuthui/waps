@@ -15,10 +15,13 @@ class CreateTravelHistoriesTable extends Migration
     {
         Schema::create('travel_histories', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->double('longitude');
+            $table->double('latitude');
+            $table->string('type');//online offline start stop
             $table->uuid('driver_id');
-            $table->string('longitude');
-            $table->string('latitude');
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->uuid('campaign_id');
+            $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
 
             $table->softDeletes();
             $table->timestamps();

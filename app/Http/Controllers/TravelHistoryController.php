@@ -14,7 +14,10 @@ class TravelHistoryController extends Controller
         $travel_histories = new TravelHistory();
         $travel_histories->driver_id  = Driver::where('user_id',Auth::user()->id)->pluck('id')->first();
         $travel_histories->longitude = $request->longitude;
+        $travel_histories->campaign_id = Driver::where('user_id',Auth::user()->id)->get()->first()->campaign->id;
         $travel_histories->latitude = $request->latitude;
+        $travel_histories->type = $request->type;
+        // dd($travel_histories->campaign_id);
         if ($travel_histories->save()) {
             return response([
                 'error' => false,

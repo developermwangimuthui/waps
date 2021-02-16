@@ -16,6 +16,10 @@ class Driver extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    use HasFactory,SoftDeletes,UsesUUID;
+    public function campaign(){
+        return $this->belongsTo(Campaign::class);
+    }
     public function driverLicenses(){
         return $this->hasMany(DriverLicense::class);
     }
