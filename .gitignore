@@ -6,8 +6,6 @@
 /public/DriverBackLicense
 /public/DriverFrontLicense
 /public/DriverPhotos
-/storage/*.key
-/vendor
 .env
 .env.backup
 .phpunit.result.cache
