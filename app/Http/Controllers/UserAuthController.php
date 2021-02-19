@@ -84,11 +84,26 @@ class UserAuthController extends Controller
                 $user = Auth::user();
                 //Create a log that the user has visited the site
                 visitor()->visit();
+
+                $driver_id = Driver::where('user_id', $user->id)->pluck('id')->first();
+                $current_front_vehicle_photo = VehiclePhoto::where('driver_id', $driver_id)->pluck('car_front')->first();
+                if ($current_front_vehicle_photo != '') {
                 return response([
                     'error' => false,
                     'message' => 'Success! you are logged in successfully',
-                    'user' => new UserRegisterResource($user)
+                    'user' => new UserRegisterResource($user),
+                    'has_documents'=>true
                 ], Response::HTTP_OK);
+
+                }else{
+                    return response([
+                        'error' => false,
+                        'message' => 'Success! you are logged in successfully',
+                        'user' => new UserRegisterResource($user),
+                        'has_documents'=>false
+                    ], Response::HTTP_OK);
+
+                }
             } else {
                 return response([
                     'error' => true,
