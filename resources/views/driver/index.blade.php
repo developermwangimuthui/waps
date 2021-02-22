@@ -59,7 +59,6 @@
                                         <div class="avatars">
                                             <div class="avatar"><img class="img-100 rounded-circle"
                                                     src="../assets/images/user/1.jpg" alt="#">
-                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
@@ -74,7 +73,6 @@
                                         <div class="avatars">
                                             <div class="avatar"><img class="img-100 rounded-circle"
                                                     src="../assets/images/user/1.jpg" alt="#">
-                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
@@ -104,38 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 xl-50 news box-col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="header-top">
-                                <h5 class="m-0">News & Update</h5>
-                                <div class="card-header-right-icon">
-                                    <select class="button btn btn-primary">
-                                        <option>Today</option>
-                                        <option>Tomorrow</option>
-                                        <option>Yesterday</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="news-update">
-                                <h6>36% off For pixel lights Couslations Types.</h6><span>Lorem Ipsum is simply
-                                    dummy...</span>
-                            </div>
-                            <div class="news-update">
-                                <h6>We are produce new product this</h6><span> Lorem Ipsum is simply text of the printing...
-                                </span>
-                            </div>
-                            <div class="news-update">
-                                <h6>50% off For COVID Couslations Types.</h6><span>Lorem Ipsum is simply dummy...</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="bottom-btn"><a href="#">More...</a></div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-xl-4 xl-50 appointment-sec box-col-6">
                     <div class="row">
                         <div class="col-xl-12 appointment">
@@ -195,68 +162,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-12 alert-sec">
-                            <div class="card bg-img">
-                                <div class="card-header">
-                                    <div class="header-top">
-                                        <h5 class="m-0">Alert </h5>
-                                        <div class="dot-right-icon"><i class="fa fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="body-bottom">
-                                        <h6> 10% off For drama lights Couslations...</h6><span class="font-roboto">Lorem
-                                            Ipsum is simply dummy...It is a long established fact that a reader will be
-                                            distracted by </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
-                <div class="col-xl-4 xl-50 notification box-col-6">
-                    <div class="card">
-                        <div class="card-header card-no-border">
-                            <div class="header-top">
-                                <h5 class="m-0">notification</h5>
-                                <div class="card-header-right-icon">
-                                    <select class="button btn btn-primary">
-                                        <option>Today</option>
-                                        <option>Tomorrow</option>
-                                        <option>Yesterday</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0">
-                            <div class="media">
-                                <div class="media-body">
-                                    <p>20-04-2020 <span>10:10</span></p>
-                                    <h6>Updated Product<span class="dot-notification"></span></h6><span>Quisque a consequat
-                                        ante sit amet magna...</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body">
-                                    <p>20-04-2020<span class="ps-1">Today</span><span
-                                            class="badge badge-secondary">New</span></p>
-                                    <h6>Tello just like your product<span class="dot-notification"></span></h6><span>Quisque
-                                        a consequat ante sit amet magna... </span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body">
-                                    <div class="d-flex mb-3">
-                                        <div class="inner-img"><img class="img-fluid"
-                                                src="/assets/images/notification/1.jpg" alt="Product-1"></div>
-                                        <div class="inner-img"><img class="img-fluid"
-                                                src="/assets/images/notification/2.jpg" alt="Product-2"></div>
-                                    </div><span class="mt-3">Quisque a consequat ante sit amet magna...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
 
                 <div class="col-sm-12">

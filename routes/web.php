@@ -17,7 +17,7 @@ use App\Http\Controllers\CustomerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/campaign/create', [CampaignController::class, 'create'])->name('campaign.create');
     Route::post('/campaign/store', [CampaignController::class, 'store'])->name('campaign.store');
     Route::post('/campaign/update/{id}', [CampaignController::class, 'update'])->name('campaign.update');
+    Route::get('/campaign/edit/{id}', [CampaignController::class, 'edit'])->name('campaign.edit');
     Route::get('/campaign/show/{id}', [CampaignController::class, 'show'])->name('campaign.show');
     Route::delete('/campaign/delete/{id}', [CampaignController::class, 'delete'])->name('campaign.delete');
 

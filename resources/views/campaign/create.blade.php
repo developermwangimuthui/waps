@@ -51,14 +51,17 @@
                                                 @endforeach
                                             </select>
 
-                                        </div>
+                                        </div> @foreach ($drivers as $driver)
+                                                <input type="hidden" name="driver_id" value="{{$driver->id}}">
+                                                @endforeach
                                         <div class="mb-3">
                                             <label class="col-form-label pt-0" for="customer">Drivers</label>
                                             <select name="vehicle_id" id="" class="form-control">
                                                 <option value="">Select a Driver for this campaign</option>
+
                                                 @foreach ($drivers as $driver)
 
-                                                <option value="{{$driver->vehicles[0]->id}}"> {{$driver->user->first_name}} &nbsp;{{$customer->user->surname}}</option>
+                                                <option value="{{$driver->vehicles[0]->id}}"> {{$driver->user->first_name}} &nbsp;{{$driver->user->surname}}</option>
                                                 @endforeach
                                             </select>
 

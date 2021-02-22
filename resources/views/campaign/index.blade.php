@@ -29,7 +29,7 @@
                                         <div class="avatars">
                                             <div class="avatar"><img class="img-100 rounded-circle"
                                                     src="../assets/images/user/1.jpg" alt="#">
-                                                <div class="status-online"></div>
+                                                {{-- <div class="status-online"></div> --}}
                                             </div>
                                         </div>
                                         <div class="media-body">
@@ -44,12 +44,13 @@
                                         <div class="avatars">
                                             <div class="avatar"><img class="img-100 rounded-circle"
                                                     src="../assets/images/user/1.jpg" alt="#">
-                                                <div class="status-offline"></div>
+                                                <div class="status-online"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                {{-- <h4>{{ $offlineDriverscount }}</h4><span>Offline</span> --}}
+                                                <h4>{{ $activeCampaignsCount }}</h4>
+                                                <span>Active Campaigns</span>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +66,8 @@
                                         <div class="media-body">
                                             <div class="right-chart-content">
                                             </div>
-                                            {{-- <h4>{{ $allDriversCount }}</h4><span>Total Drivers</span> --}}
+                                            <h4>{{ $finishedCampaignsCount }}</h4>
+                                            <span>Finished Campaigns</span>
                                         </div>
                                     </div>
                                 </div>
@@ -74,12 +76,12 @@
                                         <div class="avatars">
                                             <div class="avatar"><img class="img-100 rounded-circle"
                                                     src="../assets/images/user/1.jpg" alt="#">
-                                                <div class="status-offline"></div>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <div class="right-chart-content">
-                                                {{-- <h4>{{ $newDriverRequestsCount }}</h4><span>New Driver Request</span> --}}
+                                                {{-- <h4>{{ $newDriverRequestsCount }}</h4> --}}
+                                                <span>New Driver Request</span>
                                             </div>
                                         </div>
                                     </div>
@@ -104,165 +106,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 xl-50 news box-col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="header-top">
-                                <h5 class="m-0">News & Update</h5>
-                                <div class="card-header-right-icon">
-                                    <select class="button btn btn-primary">
-                                        <option>Today</option>
-                                        <option>Tomorrow</option>
-                                        <option>Yesterday</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="news-update">
-                                <h6>36% off For pixel lights Couslations Types.</h6><span>Lorem Ipsum is simply
-                                    dummy...</span>
-                            </div>
-                            <div class="news-update">
-                                <h6>We are produce new product this</h6><span> Lorem Ipsum is simply text of the printing...
-                                </span>
-                            </div>
-                            <div class="news-update">
-                                <h6>50% off For COVID Couslations Types.</h6><span>Lorem Ipsum is simply dummy...</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="bottom-btn"><a href="#">More...</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 xl-50 appointment-sec box-col-6">
-                    <div class="row">
-                        <div class="col-xl-12 appointment">
-                            <div class="card">
-                                <div class="card-header card-no-border">
-                                    <div class="header-top">
-                                        <h5 class="m-0">New Drivers Request</h5>
-                                        <div class="card-header-right-icon">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="appointment-table table-responsive">
-                                        <table class="table table-bordernone">
-                                            {{-- <tbody>
-                                                @foreach ($newDriverRequests as $campaign)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="avatars">
-                                                                <div class="avatar">
-                                                                    @php
-                                                                        $campaign_id = $campaign->drivers[0]->id;
-                                                                        $image = \App\Models\DriverPhoto::where('driver_id', $campaign_id)
-                                                                            ->pluck('profile_pic_path')
-                                                                            ->first();
-                                                                    @endphp
-
-                                                                    <img class="img-50 rounded-circle table-img"
-                                                                        src="{{ URL::to('/') }}/DriverPhotos/{{ $image }}"
-                                                                        alt="{{ $campaign->first_name }}">
-                                                                    <div
-                                                                        class="{{ $campaign->isOnline() ? 'status-online ' : 'status-offline' }}">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="img-content-box"><span
-                                                                class="d-block">{{ $campaign->first_name }}
-                                                                &nbsp;{{ $campaign->surname }}
-                                                        </td>
-                                                        <td>
-                                                            <p class="m-0 font-primary">
-                                                                {{ $campaign->created_at->format('d M, yy') }}</p>
-                                                        </td>
-                                                        <td class="text-end"><a
-                                                                href="{{ route('driver.show', $campaign->drivers[0]->id) }}"><i
-                                                                    data-feather="eye">View</i></a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
-
-                                            </tbody> --}}
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 alert-sec">
-                            <div class="card bg-img">
-                                <div class="card-header">
-                                    <div class="header-top">
-                                        <h5 class="m-0">Alert </h5>
-                                        <div class="dot-right-icon"><i class="fa fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="body-bottom">
-                                        <h6> 10% off For drama lights Couslations...</h6><span class="font-roboto">Lorem
-                                            Ipsum is simply dummy...It is a long established fact that a reader will be
-                                            distracted by </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 xl-50 notification box-col-6">
-                    <div class="card">
-                        <div class="card-header card-no-border">
-                            <div class="header-top">
-                                <h5 class="m-0">notification</h5>
-                                <div class="card-header-right-icon">
-                                    <select class="button btn btn-primary">
-                                        <option>Today</option>
-                                        <option>Tomorrow</option>
-                                        <option>Yesterday</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0">
-                            <div class="media">
-                                <div class="media-body">
-                                    <p>20-04-2020 <span>10:10</span></p>
-                                    <h6>Updated Product<span class="dot-notification"></span></h6><span>Quisque a consequat
-                                        ante sit amet magna...</span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body">
-                                    <p>20-04-2020<span class="ps-1">Today</span><span
-                                            class="badge badge-secondary">New</span></p>
-                                    <h6>Tello just like your product<span class="dot-notification"></span></h6><span>Quisque
-                                        a consequat ante sit amet magna... </span>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-body">
-                                    <div class="d-flex mb-3">
-                                        <div class="inner-img"><img class="img-fluid"
-                                                src="/assets/images/notification/1.jpg" alt="Product-1"></div>
-                                        <div class="inner-img"><img class="img-fluid"
-                                                src="/assets/images/notification/2.jpg" alt="Product-2"></div>
-                                    </div><span class="mt-3">Quisque a consequat ante sit amet magna...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
 
 
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Customers</h5>
+                            <h5>Campaigns</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -284,17 +134,21 @@
                                                 </td>
                                                 <td>{{ $campaign->goal }} </td>
                                                 @php
-                                                    $user_id = $campaign->customer->id;
+                                                    $customer_id = $campaign->customer->id;
+
+
+
+                                                    $user_id = \App\Models\Customer::where('id', $customer_id)->pluck('user_id')->first();
                                                     $users = \App\Models\User::where('id', $user_id)->get();
+
                                                 @endphp
                                                 @foreach ($users as $user)
 
-                                                <td>{{ $user->first_name }} &nbsp; {{ $user->surname }} </td>
+                                                    <td>{{ $user->first_name }} &nbsp; {{ $user->surname }} </td>
                                                 @endforeach
-                                                {{-- <td>{{ $campaign->customer->name }}</td> --}}
                                                 <td>{{ $campaign->status }}</td>
                                                 <td><a href="{{ route('campaign.show', $campaign->id) }}"><i
-                                                            data-feather="eye">View</i></a></td>
+                                                            data-feather="eye">View</i></a> &nbsp; &nbsp;<a href="{{ route('campaign.edit', $campaign->id) }}"><i data-feather="edit"></i></i></a></td>
                                             </tr>
                                         @endforeach
 

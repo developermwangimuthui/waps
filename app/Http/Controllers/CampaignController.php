@@ -17,12 +17,24 @@ class CampaignController extends Controller
         $campaigns = Campaign::with('campaignVehicles', 'customer')->get();
 
         $allCampaignCount = $this->allCampaignsCount();
-        return view('campaign.index', compact('allCampaignCount','campaigns'));
+        $activeCampaignsCount = $this->activeCampaignsCount();
+        $finishedCampaignsCount = $this->finishedCampaignsCount();
+        return view('campaign.index', compact('allCampaignCount', 'campaigns','finishedCampaignsCount','activeCampaignsCount'));
     }
     public function allCampaignsCount()
     {
+        return Campaign::with('campaignVehicles')->count();
+    }
+    public function activeCampaignsCount()
+    {
         return Campaign::with('campaignVehicles')->where([
             ['status', '=', 1],
+        ])->count();
+    }
+    public function finishedCampaignsCount()
+    {
+        return Campaign::with('campaignVehicles')->where([
+            ['status', '=', 2],
         ])->count();
     }
     public function create()
@@ -36,6 +48,7 @@ class CampaignController extends Controller
     {
         $campaign = new Campaign();
         $campaign->customer_id = $request->customer_id;
+        $campaign->driver_id = $request->driver_id;
         $campaign->name = $request->name;
         $campaign->goal = $request->goal;
         $campaign->status = 1;
@@ -51,5 +64,11 @@ class CampaignController extends Controller
             return redirect()->route('campaign.index')->with(['error' => 'Campaign not Created']);
         }
     }
+    public function show($campaign_id)
+    {
+        $campaigns = Campaign::with('driver', 'customer', 'campaignVehicles')->where('id', $campaign_id)->get();
+        // dd($campaigns);
 
+        return view('campaign.show', compact('campaigns'));
+    }
 }

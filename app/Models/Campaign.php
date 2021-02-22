@@ -14,8 +14,8 @@ class Campaign extends Model
     public function campaignVehicles(){
         return $this->hasMany(CampaignVehicle::class);
     }
-    public function drivers(){
-        return $this->hasMany(Driver::class);
+    public function driver(){
+        return $this->belongsTo(Driver::class);
     }
 
     public function customer()
