@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-title">
@@ -21,7 +20,7 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-xl-6">
+                <div class="col-sm-12 col-xl-12">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
@@ -31,41 +30,57 @@
                                 <div class="card-body">
                                     <form class="theme-form" action="{{ route('campaign.store') }}" method="POST">
                                         @csrf
-                                        <div class="mb-3">
-                                            <label class="col-form-label pt-0" for="name">Campaign Name</label>
-                                            <input class="form-control" id="name" type="text"
-                                                placeholder="Enter Campaign Name" name="name">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="col-form-label pt-0" for="name">Campaign Name</label>
+                                                <input class="form-control" id="name" type="text"
+                                                    placeholder="Enter Campaign Name" name="name">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="col-form-label pt-0" for="goal">Campaign Goal</label>
+                                                <input class="form-control" id="goal" type="text"
+                                                    placeholder="Enter Campaign Goal" name="goal">
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="col-form-label pt-0" for="goal">Campaign Goal</label>
-                                            <input class="form-control" id="goal" type="text" placeholder="Enter Campaign Goal"
-                                                name="goal">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="col-form-label pt-0" for="customer">Customer</label>
+                                                <select name="customer_id" id="" class="form-control">
+                                                    <option value="">Select a customer for this campaign</option>
+
+                                                    @foreach ($customers as $customer)
+
+                                                        <option value="{{ $customer->id }}">
+                                                            {{ $customer->user->first_name }}
+                                                            &nbsp;{{ $customer->user->surname }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="col-form-label pt-0" for="customer">Customer</label>
-                                            <select name="customer_id" id="" class="form-control">
-                                                <option value="">Select a customer for this campaign</option>
-                                                @foreach ($customers as $customer)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="col-form-label pt-0" for="customer">Drivers</label>
+                                                <ul>
+                                                    @foreach ($drivers as $driver)
+                                                        <li>
+                                                             <input type="checkbox" name="driver_id[]"
+                                                            value="{{ $driver->id }}">
+                                                        :{{ $driver->user->first_name }}
+                                                        &nbsp;{{ $driver->user->surname }}
+                                                        </li>
 
-                                                <option value="{{$customer->id}}"> {{$customer->user->first_name}} &nbsp;{{$customer->user->surname}}</option>
-                                                @endforeach
-                                            </select>
 
-                                        </div> @foreach ($drivers as $driver)
-                                                <input type="hidden" name="driver_id" value="{{$driver->id}}">
-                                                @endforeach
-                                        <div class="mb-3">
-                                            <label class="col-form-label pt-0" for="customer">Drivers</label>
-                                            <select name="vehicle_id" id="" class="form-control">
-                                                <option value="">Select a Driver for this campaign</option>
+                                                    @endforeach
+                                                </ul>
 
-                                                @foreach ($drivers as $driver)
 
-                                                <option value="{{$driver->vehicles[0]->id}}"> {{$driver->user->first_name}} &nbsp;{{$driver->user->surname}}</option>
-                                                @endforeach
-                                            </select>
 
+                                            </div>
                                         </div>
+
+
+
 
                                         <div class="card-footer">
                                             <button class="btn btn-primary" type="submit">Submit</button>

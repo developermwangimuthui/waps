@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DistanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //...................................Drivers......................................//
     Route::get('/driver/index', [DriverController::class, 'index'])->name('driver.index');
+    Route::get('/approve/driver/{id}', [DriverController::class, 'approveDriver'])->name('driver.approve');
     Route::get('/driver/create', [DriverController::class, 'create'])->name('driver.create');
     Route::post('/driver/store', [DriverController::class, 'store'])->name('driver.store');
     Route::post('/driver/update/{id}', [DriverController::class, 'update'])->name('driver.update');
@@ -46,7 +48,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/customer/index', [CustomerController::class, 'index'])->name('customer.index');
     Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
     Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+    Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
     Route::get('/customer/show/{id}', [CustomerController::class, 'show'])->name('customer.show');
     Route::delete('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+
+
+    //............................Distance Calculation.................................//
+
+    Route::get('/getCampaignDistanceCovered/{campaign_id}', [DistanceController::class, 'getCampaignDistanceCovered'])->name('getCampaignDistanceCovered');
+    Route::get('/getDriverCampaignDistanceCovered/{driver_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
+
 });

@@ -10,13 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Campaign extends Model
 {
-    use HasFactory,SoftDeletes,UsesUUID;
-    public function campaignVehicles(){
+    use HasFactory, SoftDeletes, UsesUUID;
+    public function campaignVehicles()
+    {
         return $this->hasMany(CampaignVehicle::class);
     }
-    public function driver(){
-        return $this->belongsTo(Driver::class);
-    }
+
 
     public function customer()
     {

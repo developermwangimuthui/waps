@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/feather-icon.css">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/scrollbar.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendors/photoswipe.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/animate.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/chartist.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/date-picker.css">

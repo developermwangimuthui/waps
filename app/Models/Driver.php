@@ -23,6 +23,9 @@ class Driver extends Model
     public function driverLicenses(){
         return $this->hasMany(DriverLicense::class);
     }
+    public function vehiclePhotos(){
+        return $this->hasMany(VehiclePhoto::class);
+    }
     public function driverPhotos(){
         return $this->hasMany(DriverPhoto::class);
     }

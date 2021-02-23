@@ -13,6 +13,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $customers = Customer::with('campaigns', 'user')->get();
+        // dd($customers);
 
         $allCustomerCount = $this->allCustomersCount();
         return view('customer.index', compact('customers', 'allCustomerCount'));
@@ -21,6 +22,12 @@ class CustomerController extends Controller
     public function create()
     {
         return view('customer.create');
+    }
+    public function edit($customer_id)
+    {
+        $customers = Customer::with('user', 'campaigns')->where('id', $customer_id)->get();
+        // dd($customers);
+        return view('customer.edit', compact('customers'));
     }
 
     public function store(Request $request)
@@ -53,5 +60,29 @@ class CustomerController extends Controller
             ['user_type', '=', 3],
             ['status', '=', 1],
         ])->count();
+    }
+
+    public function update(Request $request, $user_id)
+    {
+        if (User::where('id', $user_id)->update([
+            'first_name' => $request->first_name,
+            'surname' => $request->surname,
+            'country' => $request->country,
+            'county' => $request->county,
+            'email' => $request->email,
+            'phone' => $request->phone,
+
+        ])) {
+            return redirect()->route('customer.index')->with(['success' => 'Customer Updated Succesfully']);
+        } else {
+            return redirect()->back()->with(['error' => 'Customer not updated']);
+        }
+    }
+    public function show(Request $request,$customer_id)
+    {
+
+        $customers = Customer::with('campaigns', 'user')->where('id',$customer_id)->get();
+        // dd($customers);
+
     }
 }

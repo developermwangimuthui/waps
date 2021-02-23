@@ -26,10 +26,11 @@ class DriverController extends Controller
     public function show(Request $request, $driver_id)
     {
 
-        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->where([
+        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user','vehiclePhotos')->where([
             ['drivers.id','=',$driver_id],
-            ['drivers.status','=',1],
+            // ['drivers.status','=',1],
         ])->get();
+        // dd($drivers);
         return view('driver.show', compact('drivers'));
     }
 
@@ -83,5 +84,17 @@ class DriverController extends Controller
             ['user_type', '=', 2],
             ['status', '=', 0],
         ])->get();
+    }
+
+    public function approveDriver($driver_id)
+    {
+        $user_id =Driver::where('id',$driver_id)->pluck('user_id')->first();
+        Driver::where('id',$driver_id)->update([
+            'status'=>1
+        ]);
+        User::where('id',$user_id)->update([
+            'status'=>1
+        ]);
+        return redirect()->back()->with(['success'=>'Driver Approved']);
     }
 }
