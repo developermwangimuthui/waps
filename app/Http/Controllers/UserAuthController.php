@@ -121,6 +121,10 @@ class UserAuthController extends Controller
 
     public function updateProfile(Request $request)
     {
+        // $validator=$request->validate([
+        //     'phone' => ['required', 'max:255'],
+        //     'first_name' => ['required', 'max:255'],
+        // ]);
 
 
         $user = Auth::user();
