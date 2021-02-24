@@ -19,6 +19,7 @@ class CreateCampaignDriversTable extends Migration
             $table->uuid('driver_id');
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
