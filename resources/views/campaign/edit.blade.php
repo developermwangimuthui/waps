@@ -47,6 +47,7 @@
             <!-- Container-fluid starts-->
             <div class="container-fluid">
                 <div class="row">
+                    @include('layouts.alert')
                     <div class="col-sm-12 col-xl-6">
                         <div class="row">
                             <div class="col-sm-12">
@@ -93,7 +94,9 @@
                                                 <label class="col-form-label pt-0" for="customer">Current Campaign Drivers</label>
                                                 <ul>
                                                     @foreach ($drivers as $driver)
-                                                        <li>{{ $driver[0]->first_name }}
+                                                        <li>   <input type="checkbox" name="driver_user_id[]"
+                                                            value="{{ $driver[0]->id }}">
+                                                        :{{ $driver[0]->first_name }}
                                                         &nbsp;{{ $driver[0]->surname }}
                                                         </li>
 

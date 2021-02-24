@@ -45,9 +45,13 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo" href="index-2.html"><img class="img-fluid for-light"
-                                    src="/assets/images/logo/login.png" alt="looginpage"><img class="img-fluid for-dark"
-                                    src="/assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+                        <div>
+{{--
+                            <a class="logo" href="index-2.html"><img class="img-fluid for-light"
+                                    src="/assets/images/logo/login.jpeg" alt="looginpage"><img class="img-fluid for-dark"
+                                    src="/assets/images/logo/logo_dark.png" alt="looginpage"></a> --}}
+                                </div>
+                                <h3>WAPS</h3>
                         <div class="login-main">
                             <form method="POST" class="theme-form" action="{{ route('login') }}">
                                 @csrf

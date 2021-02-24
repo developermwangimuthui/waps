@@ -20,6 +20,8 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="row">
+
+                @include('layouts.alert')
                 <div class="col-sm-12 col-xl-12">
                     <div class="row">
                         <div class="col-sm-12">

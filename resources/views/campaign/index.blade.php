@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-               
+
 
 
                 <div class="col-sm-12">
@@ -114,6 +114,8 @@
                         <div class="card-header">
                             <h5>Campaigns</h5>
                         </div>
+
+                    @include('layouts.alert')
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="display dataTable" id="basic-3">

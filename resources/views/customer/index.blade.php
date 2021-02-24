@@ -110,6 +110,8 @@
                         <div class="card-header">
                             <h5>Customers</h5>
                         </div>
+
+                    @include('layouts.alert')
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="display dataTable" id="basic-3">
@@ -129,10 +131,10 @@
                                                 </td>
                                                 <td>Email: &nbsp;{{ $customer->user->email }} <br> Phone:
                                                     &nbsp;{{ $customer->user->phone }}</td>
-                                                <td>@if ($customer->campaigns[0]->name != null ||$customer->campaigns[0]->name != "")
-                                                    {{ $customer->campaigns[0]->name }}
-                                                @else
+                                                <td>@if (empty($customer->campaigns[0]))
                                                     <p>No Campaign</p>
+                                                    @else
+                                                    {{ $customer->campaigns[0]->name }}
                                                 @endif</td>
                                                 <td><a href="{{ route('customer.edit', $customer->id) }}"><i data-feather="edit"></i></i></a></td>
                                             </tr>

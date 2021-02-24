@@ -18,7 +18,6 @@ $driver_id =Driver::where('user_id',Auth::user()->id)->pluck('id')->first();
         $travel_histories->campaign_id = CampaignDriver::where('driver_id',$driver_id)->pluck('campaign_id')->first();
         $travel_histories->latitude = $request->latitude;
         $travel_histories->type = $request->type;
-        // dd($travel_histories->campaign_id);
         if ($travel_histories->save()) {
             return response([
                 'error' => false,
