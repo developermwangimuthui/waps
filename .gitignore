@@ -1,11 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/CarBackPhotos
-/public/CarFrontPhotos
-/public/DriverBackLicense
-/public/DriverFrontLicense
-/public/DriverPhotos
 .env
 .env.backup
 .phpunit.result.cache
