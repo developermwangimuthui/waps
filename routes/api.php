@@ -27,9 +27,12 @@ Route::prefix('v1')->group(function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::post('/updateprofle', [UserAuthController::class, 'updateProfile']);
 
-        Route::post('/location',[TravelHistoryController::class, 'getLongitudeLatitude']);
+        Route::post('/location', [TravelHistoryController::class, 'getLongitudeLatitude']);
+
+
+        //............................Distance Calculation.................................//
+
+        Route::get('/getCampaignDistanceCovered/{campaign_id}', [DistanceController::class, 'getCampaignDistanceCovered'])->name('getCampaignDistanceCovered');
+        Route::get('/getDriverCampaignDistanceCovered/{driver_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
     });
 });
-
-
-

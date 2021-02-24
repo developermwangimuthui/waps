@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TravelHistory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 class DistanceController extends Controller
 {
     public function todayCampaingDistance()
@@ -61,6 +62,14 @@ class DistanceController extends Controller
             $distance[] = $this->distance($latitudes[$i], $longitude[$i], $latitudes[$i + 1], $longitude[$i + 1], "K");
         }
         $distance_covered = array_sum ($distance);
+        if (Str::startsWith(request()->path(), 'api')) {
+            return response([
+                'error' => False,
+                'message' => 'Success',
+                'distance_covered' => $distance_covered
+            ], Response::HTTP_OK);
+
+        }
         return $distance_covered;
     }
 }
