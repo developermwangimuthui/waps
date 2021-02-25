@@ -70,103 +70,10 @@
             @include('layouts.footer')
         </div>
     </div>
-    <script>
-        var map;
-
-        function initMap() {
-            map = new google.maps.Map(
-                document.getElementById('heat-map'), {
-                    center: new google.maps.LatLng(-33.91700, 151.233),
-                    zoom: 18
-                });
-
-            var iconBase =
-                'http://admin.pixelstrap.com/cuba/assets/images/dashboard-2/';
-
-            var icons = {
-                userbig: {
-                    icon: iconBase + '1.png'
-                },
-                library: {
-                    icon: iconBase + '3.png'
-                },
-                info: {
-                    icon: iconBase + '2.png'
-                }
-            };
-
-            var features = [{
-                position: new google.maps.LatLng(-33.91752, 151.23270),
-                type: 'info'
-            }, {
-                position: new google.maps.LatLng(-33.91700, 151.23280),
-                type: 'userbig'
-            }, {
-                position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
-                type: 'library'
-            }];
-
-            // Create markers.
-            for (var i = 0; i < features.length; i++) {
-                var marker = new google.maps.Marker({
-                    position: features[i].position,
-                    icon: icons[features[i].type].icon,
-                    map: map
-                });
-            };
-        }
-
-    </script>
-    <script>
-        var map;
-
-        function initMap() {
-            map = new google.maps.Map(
-                document.getElementById('map'), {
-                    center: new google.maps.LatLng(-33.91700, 151.233),
-                    zoom: 18
-                });
-
-            var iconBase =
-                'http://admin.pixelstrap.com/cuba/assets/images/dashboard-2/';
-
-            var icons = {
-                userbig: {
-                    icon: iconBase + '1.png'
-                },
-                library: {
-                    icon: iconBase + '3.png'
-                },
-                info: {
-                    icon: iconBase + '2.png'
-                }
-            };
-
-            var features = [{
-                position: new google.maps.LatLng(-33.91752, 151.23270),
-                type: 'info'
-            }, {
-                position: new google.maps.LatLng(-33.91700, 151.23280),
-                type: 'userbig'
-            }, {
-                position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
-                type: 'library'
-            }];
-
-            // Create markers.
-            for (var i = 0; i < features.length; i++) {
-                var marker = new google.maps.Marker({
-                    position: features[i].position,
-                    icon: icons[features[i].type].icon,
-                    map: map
-                });
-            };
-        }
-
-    </script>
-    <script async="" defer=""
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGCQvcXUsXwCdYArPXo72dLZ31WS3WQRw&amp;callback=initMap">
-    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&callback=initMap&libraries=&v=weekly"
+    async
+    ></script>
     </div>
     <!-- latest jquery-->
     <script src="/assets/js/jquery-3.5.1.min.js"></script>
