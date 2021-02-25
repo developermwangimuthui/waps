@@ -58,5 +58,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/getCampaignDistanceCovered/{campaign_id}', [DistanceController::class, 'getCampaignDistanceCovered'])->name('getCampaignDistanceCovered');
     Route::get('/getDriverCampaignDistanceCovered/{driver_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
+    Route::get('/mapMarker/{campaign_id}', [DistanceController::class, 'mapMarker'])->name('mapMarker');
 
 });

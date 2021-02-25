@@ -72,4 +72,16 @@ class DistanceController extends Controller
         }
         return $distance_covered;
     }
+
+    public function mapMarker($campaign_id){
+        $campaignLocation = TravelHistory::where('campaign_id', $campaign_id)->get();
+        $map_markes = array ();
+        foreach ($campaignLocation as $key => $location) {
+            $map_markes[] = (object)array(
+                'lng' => $location->longitude,
+                'lat' => $location->latitude,
+            );
+        }
+        return response()->json($map_markes);
+    }
 }

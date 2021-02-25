@@ -40,7 +40,8 @@
                                         </div>
                                         <div class="col">
                                             <h6 class="mb-1">
-                                                {{ $driver->user->first_name }}&nbsp;&nbsp;{{ $driver->user->surname }}</h6>
+                                                {{ $driver->user->first_name }}&nbsp;&nbsp;{{ $driver->user->surname }}
+                                            </h6>
                                             <p class="mb-4">Driver</p>
                                         </div>
                                     </div>
@@ -63,15 +64,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Vehicle Registration</label>:
-                                        <p> {{ $driver->vehicles[0]->car_number_plate}}</p>
+                                        <p> {{ $driver->vehicles[0]->car_number_plate }}</p>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Car Model</label>:
-                                        <p> {{ $driver->vehicles[0]->car_model}}</p>
+                                        <p> {{ $driver->vehicles[0]->car_model }}</p>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Car Year of Manufacture</label>:
-                                        <p> {{ $driver->vehicles[0]->yom}}</p>
+                                        <p> {{ $driver->vehicles[0]->yom }}</p>
                                     </div>
                                     @if ($driver->status == 0)
 
@@ -218,9 +219,9 @@
                                 </div>
                                 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
                                     <!--
-                      Background of PhotoSwipe.
-                      It's a separate element, as animating opacity is faster than rgba().
-                      -->
+                          Background of PhotoSwipe.
+                          It's a separate element, as animating opacity is faster than rgba().
+                          -->
                                     <div class="pswp__bg"></div>
                                     <!-- Slides wrapper with overflow:hidden.-->
                                     <div class="pswp__scroll-wrap">
