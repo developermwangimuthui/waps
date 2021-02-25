@@ -307,32 +307,7 @@
                                 <div class="dash-map">
                                     <div id="heat-map"></div>
                                 </div>
-                                <div class="code-box-copy">
-                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head4"
-                                        title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                                    <pre><code class="language-html" id="example-head4">&lt;!-- Cod Box Copy begin --&gt;
-                                                                                                    &lt;div class=&quot;card&quot;&gt;
-                                                                                                    &lt;div class=&quot;card-header card-no-border&quot;&gt;
-                                                                                                    &lt;h5&gt;Location&lt;/h5&gt;
-                                                                                                    &lt;div class=&quot;card-header-right&quot;&gt;
-                                                                                                    &lt;ul class=&quot;list-unstyled card-option&quot;&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;fa fa-spin fa-cog&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;view-html fa fa-code&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;icofont icofont-maximize full-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;icofont icofont-minus minimize-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;icofont icofont-refresh reload-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                      &lt;li&gt;&lt;i class=&quot;icofont icofont-error close-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                    &lt;/ul&gt;
-                                                                                                    &lt;/div&gt;
-                                                                                                    &lt;/div&gt;
-                                                                                                    &lt;div class=&quot;card-body pt-0&quot;&gt;
-                                                                                                    &lt;div class=&quot;dash-map&quot;&gt;
-                                                                                                    &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
-                                                                                                    &lt;/div&gt;
-                                                                                                    &lt;/div&gt;
-                                                                                                    &lt;/div&gt;
-                                                                                                    &lt;!-- Cod Box Copy end --&gt;</code></pre>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -416,7 +391,7 @@
                         document.getElementById('map'), {
 
                             center: new google.maps.LatLng(data[0].lat, data[0].lng),
-                            zoom: 18
+                            zoom: 12
                         });
 
 
