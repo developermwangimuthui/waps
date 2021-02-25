@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-4 xl-50 appointment-sec box-col-6">
+                <div class="col-xl-12 xl-50 appointment-sec box-col-6">
                     <div class="row">
                         <div class="col-xl-12 appointment">
                             <div class="card">
@@ -115,9 +115,19 @@
                                         </div>
                                     </div>
                                 </div>
+
+                    @include('layouts.alert')
                                 <div class="card-body pt-0">
-                                    <div class="appointment-table table-responsive">
-                                        <table class="table table-bordernone">
+                                    <div class="table-responsive">
+                                        <table class="display dataTable" id="basic-3">
+                                            <thead>
+                                                <tr>
+                                                    <th>Photo</th>
+                                                    <th>Name</th>
+                                                    <th>Request Date</th>
+                                                    <th>View Credentials</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 @foreach ($newDriverRequests as $driver)
                                                     <tr>
@@ -203,7 +213,11 @@
                                                 </td>
                                                 <td>Email: &nbsp;{{ $driver->user->email }} <br> Phone:
                                                     &nbsp;{{ $driver->user->phone }}</td>
-                                                <td>{{ $driver->vehicles[0]->car_number_plate }}</td>
+                                                <td>@if (empty($driver->vehicles[0]))
+                                                    <p>Not Updated</p>
+                                                    @else
+                                                    {{ $driver->vehicles[0]->car_number_plate }}
+                                                @endif</td>
                                                 <td><a href="{{ route('driver.show', $driver->id) }}"><i
                                                             data-feather="eye">View</i></a></td>
                                             </tr>

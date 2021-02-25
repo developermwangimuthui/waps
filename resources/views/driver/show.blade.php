@@ -64,15 +64,27 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Vehicle Registration</label>:
-                                        <p> {{ $driver->vehicles[0]->car_number_plate }}</p>
+                                        <p> @if (empty($driver->vehicles[0]))
+                                            <p>Not Updated</p>
+                                            @else
+                                            {{ $driver->vehicles[0]->car_number_plate }}
+                                        @endif</p>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Car Model</label>:
-                                        <p> {{ $driver->vehicles[0]->car_model }}</p>
+                                        <p> @if (empty($driver->vehicles[0]))
+                                            <p>Not Updated</p>
+                                            @else
+                                            {{ $driver->vehicles[0]->car_model }}
+                                        @endif</p>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Car Year of Manufacture</label>:
-                                        <p> {{ $driver->vehicles[0]->yom }}</p>
+                                        <p> @if (empty($driver->vehicles[0]))
+                                            <p>Not Updated</p>
+                                            @else
+                                            {{ $driver->vehicles[0]->yom }}
+                                        @endif</p>
                                     </div>
                                     @if ($driver->status == 0)
 

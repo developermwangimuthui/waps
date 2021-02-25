@@ -95,6 +95,6 @@ class DriverController extends Controller
         User::where('id',$user_id)->update([
             'status'=>1
         ]);
-        return redirect()->back()->with(['success'=>'Driver Approved']);
+        return redirect()->route('driver.index')->with(['success'=>'Driver Approved']);
     }
 }

@@ -378,6 +378,7 @@
         var map;
         var campaign_id;
         campaign_id = $("#campaign_id").val();
+        console.log();
 
         function initMap() {
 
