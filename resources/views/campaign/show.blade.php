@@ -280,7 +280,7 @@
                     <div class="col-xl-4 xl-50 box-col-12">
                         <div class="card">
                             <div class="card-header card-no-border">
-                                <h5>Campaign Movement</h5>
+                                <h5>Campaing Heat map</h5>
                                 <div class="card-header-right">
 
                                 </div>
@@ -298,7 +298,7 @@
                     <div class="col-xl-4 xl-50 box-col-12">
                         <div class="card">
                             <div class="card-header card-no-border">
-                                <h5>Campaing Heat map </h5>
+                                <h5>Campaing Line map </h5>
                                 <div class="card-header-right">
 
                                 </div>
