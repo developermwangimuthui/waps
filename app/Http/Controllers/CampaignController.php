@@ -42,8 +42,13 @@ class CampaignController extends Controller
     {
         $drivers_with_campaigns = CampaignDriver::pluck('driver_id');
         // dd($drivers_with_campaigns);
-        $drivers = Driver::with('user')->whereNotIn('id', $drivers_with_campaigns)->get();
+        $user_type = 2;
+        $drivers =  Driver::whereHas('user', function($q) use($user_type){
 
+            $q->where('user_type', '=', $user_type);
+
+        })->whereNotIn('id', $drivers_with_campaigns)->
+        where('status',1)->get();
         $customers = Customer::with('user')->get();
         return view('campaign.create', compact('customers', 'drivers'));
     }
@@ -55,10 +60,16 @@ class CampaignController extends Controller
 
         $drivers_with_campaigns = CampaignDriver::pluck('driver_id');
         // dd($drivers_with_campaigns);
-        $alldrivers = Driver::with('user')->whereNotIn('id', $drivers_with_campaigns)->get();
+        $user_type = 2;
+        $alldrivers = Driver::whereHas('user', function($q) use($user_type){
 
+            $q->where('user_type', '=', $user_type);
+
+        })->whereNotIn('id', $drivers_with_campaigns)->
+        where('status',1)->get();
+
+        // dd($alldrivers);
         $campaign_drivers_id = CampaignDriver::where('campaign_id', $campaign_id)->pluck('driver_id');
-        // dd($campaign_drivers_id);
         $customers = Customer::with('user')->get();
         return view('campaign.edit', compact('customers', 'campaign_drivers_id', 'campaigns', 'alldrivers'));
     }

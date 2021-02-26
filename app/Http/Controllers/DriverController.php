@@ -12,6 +12,7 @@ class DriverController extends Controller
 
     public function index(Request $request)
     {
+
         $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->
         where('status',1)->get();
         // dd($drivers);
