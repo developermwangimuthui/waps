@@ -40,7 +40,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="col-form-label pt-0" for="goal">Campaign Goal</label>
-                                                <input class="form-control" id="goal" type="text"
+                                                <input class="form-control" id="goal" type="number"
                                                     placeholder="Enter Campaign Goal" name="goal">
                                             </div>
                                         </div>
