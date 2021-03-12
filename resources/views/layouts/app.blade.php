@@ -51,9 +51,15 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/vendors/prism.css">
 
     <script src="/assets/js/jquery-3.5.1.min.js"></script>
+
+    <script src="/assets/js/map-js/mapsjs-core.js"></script>
+    <script src="/assets/js/map-js/mapsjs-service.js"></script>
+    <script src="/assets/js/map-js/mapsjs-ui.js"></script>
+    <script src="/assets/js/map-js/mapsjs-mapevents.js"></script>
+    <script src="/assets/js/map-js/custom.js"></script>
 </head>
 
-<body onload="startTime()">
+<body onload="initialize()">
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -78,8 +84,8 @@
 
     <!-- latest jquery-->
     <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&callback=initMap">
-</script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&callback=initialize">
+    </script>
     <!-- Bootstrap js-->
     <script src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- feather icon js-->
@@ -131,6 +137,7 @@
     <script src="/assets/js/counter/jquery.counterup.min.js"></script>
     <script src="/assets/js/counter/counter-custom.js"></script>
     <script src="/assets/js/custom-card/custom-card.js"></script>
+
     <!-- login js-->
     <!-- Plugin used-->
 

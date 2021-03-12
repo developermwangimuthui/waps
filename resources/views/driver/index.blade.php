@@ -160,7 +160,10 @@
                                                         </td>
                                                         <td class="text-end"><a
                                                                 href="{{ route('driver.show', $driver->drivers[0]->id) }}"><i
-                                                                    data-feather="eye">View</i></a>
+                                                                    data-feather="eye"></i>Credentials</a>
+                                                        <td class="text-end"><a
+                                                                href="{{ route('driver.movements', $driver->drivers[0]->id) }}"><i
+                                                                    data-feather="eye"></i>Movements</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -218,8 +221,13 @@
                                                     @else
                                                     {{ $driver->vehicles[0]->car_number_plate }}
                                                 @endif</td>
-                                                <td><a href="{{ route('driver.show', $driver->id) }}"><i
-                                                            data-feather="eye">View</i></a></td>
+                                                <td class="text-end"><a
+                                                    href="{{ route('driver.show', $driver->id) }}"><i
+                                                        data-feather="eye"></i>Credentials</a>
+                                            <td class="text-end"><a
+                                                    href="{{ route('driver.movements', $driver->id) }}"><i
+                                                        data-feather="eye"></i>Movements</a>
+                                            </td>
                                             </tr>
                                         @endforeach
 

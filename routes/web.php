@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/driver/update/{id}', [DriverController::class, 'update'])->name('driver.update');
     Route::get('/driver/show/{id}', [DriverController::class, 'show'])->name('driver.show');
     Route::delete('/driver/delete/{id}', [DriverController::class, 'delete'])->name('driver.delete');
+    Route::get('/driver/getmovements/{id}', [DriverController::class, 'movementsMapmarker'])->name('driver.movements');
+    Route::get('/driver/movements/{id}', [DriverController::class, 'movements'])->name('driver.movements');
 
     //...................................Customers......................................//
     Route::get('/customer/index', [CustomerController::class, 'index'])->name('customer.index');

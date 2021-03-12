@@ -17,6 +17,11 @@ class TravelHistoryController extends Controller
 
         $driver_id = Driver::where('user_id', Auth::user()->id)->pluck('id')->first();
         $campaign_id = CampaignDriver::where('driver_id', $driver_id)->pluck('campaign_id')->first();
+
+                // getting auth user after auth login
+                $user = Auth::user();
+                //Create a log that the user has visited the site
+                visitor()->visit();
         //    dd($campaign_id);
         if ($campaign_id != null) {
             $travel_histories = new TravelHistory();

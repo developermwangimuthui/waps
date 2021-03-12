@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Driver;
+use App\Models\DriverMovement;
 use App\Models\User;
 
 
@@ -99,5 +100,30 @@ class DriverController extends Controller
             'status'=>1
         ]);
         return redirect()->route('driver.index')->with(['success'=>'Driver Approved']);
+    }
+
+    public function movementsMapmarker($driver_id)
+    {
+        $driverLocation = DriverMovement::where('driver_id', $driver_id)->get();
+        $map_markes = array ();
+        foreach ($driverLocation as $key => $location) {
+            $map_markes[] = (object)array(
+                'lng' => $location->longitude,
+                'lat' => $location->latitude,
+            );
+        }
+        return response()->json($map_markes);
+
+    }
+    public function movements($driver_id)
+    {
+
+ $drivers = Driver::with( 'user')->where([
+            ['drivers.id','=',$driver_id],
+            // ['drivers.status','=',1],
+        ])->get();
+        // dd($drivers);
+        return view('driver.movements',compact('drivers'));
+
     }
 }
