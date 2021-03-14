@@ -11974,6 +11974,26 @@ p.data-attributes svg {
   width: 100%; }
   .dash-map #map .gmnoprint {
     display: none; }
+.dash-map #DheatMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #DheatMap .gmnoprint {
+    display: none; }
+.dash-map #DRouteMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #DRouteMap .gmnoprint {
+    display: none; }
+.dash-map #DCheatMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #DCheatMap .gmnoprint {
+    display: none; }
+.dash-map #CheatMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #CheatMap .gmnoprint {
+    display: none; }
 
 .monthly-visit {
   margin: -4px 0 -35px; }

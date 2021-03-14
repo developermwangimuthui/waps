@@ -6,6 +6,7 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DistanceController;
+use App\Http\Controllers\ChartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/driver/delete/{id}', [DriverController::class, 'delete'])->name('driver.delete');
     Route::get('/driver/getmovements/{id}', [DriverController::class, 'movementsMapmarker'])->name('driver.movements');
     Route::get('/driver/movements/{id}', [DriverController::class, 'movements'])->name('driver.movements');
+    Route::get('/driver/campaignmovements/{driver_id}/{campaign_id}', [DriverController::class, 'campaignMovements'])->name('driver.campaignmovements');
 
     //...................................Customers......................................//
     Route::get('/customer/index', [CustomerController::class, 'index'])->name('customer.index');
@@ -59,7 +61,15 @@ Route::group(['middleware' => ['auth']], function () {
     //............................Distance Calculation.................................//
 
     Route::get('/getCampaignDistanceCovered/{campaign_id}', [DistanceController::class, 'getCampaignDistanceCovered'])->name('getCampaignDistanceCovered');
-    Route::get('/getDriverCampaignDistanceCovered/{driver_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
-    Route::get('/mapMarker/{campaign_id}', [DistanceController::class, 'mapMarker'])->name('mapMarker');
+    Route::get('/getDriverCampaignDistanceCovered/{driver_id}/{campaign_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
+    Route::get('/campaignMapMarker/{campaign_id}', [DistanceController::class, 'campaignMapMarker'])->name('campaignMapMarker');
+    Route::get('/drivercampaignMapMarker/{driver_id}/{campaign_id}', [DistanceController::class, 'drivercampaignMapMarker'])->name('drivercampaignMapMarker');
+
+
+	Route::get('/getmonths', [ChartController::class, 'getMonths'])->name('getMonths');
+	Route::get('/getMonthlyCompletedOrdersCount', 'ChartController@getMonthlyCompletedOrdersCount')->name('getMonthlyCompletedOrdersCount');
+	Route::get('/getMonthlyCancelledOrdersCount', 'ChartController@getMonthlyCancelledOrdersCount')->name('getMonthlyCancelledOrdersCount');
+	Route::get('/getMonthlyReturnOrdersCount', 'ChartController@getMonthlyReturnOrdersCount')->name('getMonthlyReturnOrdersCount');
+	Route::get('/getMonthlyOrdersData', 'ChartController@getMonthlyOrdersData')->name('getMonthlyOrdersData');
 
 });

@@ -38,6 +38,8 @@ class DistanceController extends Controller
         $distance = [];
         $latitudesCount = TravelHistory::pluck('latitude')->count();
         $latitudes = TravelHistory::where('campaign_id', $campaign_id)->orderBy('created_at', 'DESC')->pluck('latitude');
+
+        // dd($latitudes);
         $longitude = TravelHistory::where('campaign_id', $campaign_id)->orderBy('created_at', 'DESC')->pluck('longitude');
 
         for ($i = 0; $i < sizeof($latitudes) - 1; $i++) {
@@ -47,21 +49,26 @@ class DistanceController extends Controller
         $distance_covered = array_sum ($distance);
         return $distance_covered;
     }
-    public function getDriverCampaignDistanceCovered($driver_id)
+    public function getDriverCampaignDistanceCovered($driver_id,$campaign_id)
     {
         $distance = [];
-        $driver_id = '29fec41d-47c4-4590-aa46-206dd5832b08';
+        // $driver_id = '29fec41d-47c4-4590-aa46-206dd5832b08';
         $latitudesCount = TravelHistory::pluck('latitude')->count();
-        $latitudes = TravelHistory::where('driver_id', $driver_id)->orderBy('created_at', 'DESC')->pluck('latitude');
-        $longitude = TravelHistory::where('driver_id', $driver_id)->orderBy('created_at', 'DESC')->pluck('longitude');
+        $latitudes = TravelHistory::where('driver_id', $driver_id)->where('campaign_id', $campaign_id)->orderBy('created_at', 'DESC')->pluck('latitude');
+        $longitude = TravelHistory::where('driver_id', $driver_id)->where('campaign_id', $campaign_id)->orderBy('created_at', 'DESC')->pluck('longitude');
         // dd($latitudesCount);
+        // dd($latitudes,$longitude);
+        // dd($longitude);
         // dd(sizeof($latitudes));
 
         for ($i = 0; $i < sizeof($latitudes) - 1; $i++) {
 
             $distance[] = $this->distance($latitudes[$i], $longitude[$i], $latitudes[$i + 1], $longitude[$i + 1], "K");
+            // dd($latitudes[$i], $longitude[$i], $latitudes[$i + 1], $longitude[$i + 1]);
         }
+
         $distance_covered = array_sum ($distance);
+        // dd($distance_covered);
         if (Str::startsWith(request()->path(), 'api')) {
             return response([
                 'error' => False,
@@ -73,8 +80,19 @@ class DistanceController extends Controller
         return $distance_covered;
     }
 
-    public function mapMarker($campaign_id){
+    public function campaignMapMarker($campaign_id){
         $campaignLocation = TravelHistory::where('campaign_id', $campaign_id)->get();
+        $map_markes = array ();
+        foreach ($campaignLocation as $key => $location) {
+            $map_markes[] = (object)array(
+                'lng' => $location->longitude,
+                'lat' => $location->latitude,
+            );
+        }
+        return response()->json($map_markes);
+    }
+    public function drivercampaignMapMarker($driver_id,$campaign_id){
+        $campaignLocation = TravelHistory::where('campaign_id', $campaign_id)->where('driver_id',$driver_id)->get();
         $map_markes = array ();
         foreach ($campaignLocation as $key => $location) {
             $map_markes[] = (object)array(

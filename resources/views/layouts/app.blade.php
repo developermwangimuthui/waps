@@ -84,8 +84,11 @@
 
     <!-- latest jquery-->
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&callback=initialize">
-    </script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&libraries=visualization&callback=initMap">
+</script>
+    {{-- <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG1y_d7Vj9P4gXQXs6QskeLBzHJVWX5zo&callback=initMap">
+    </script> --}}
     <!-- Bootstrap js-->
     <script src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- feather icon js-->

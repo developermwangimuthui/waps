@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use App\Models\Driver;
 use App\Models\DriverMovement;
@@ -14,8 +15,7 @@ class DriverController extends Controller
     public function index(Request $request)
     {
 
-        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->
-        where('status',1)->get();
+        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user')->where('status', 1)->get();
         // dd($drivers);
         $onlineDrivers = $this->onlineDrivers();
         $onlineDriverscount = $this->onlineDriversCount();
@@ -30,8 +30,8 @@ class DriverController extends Controller
     public function show(Request $request, $driver_id)
     {
 
-        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user','vehiclePhotos')->where([
-            ['drivers.id','=',$driver_id],
+        $drivers = Driver::with('driverPhotos', 'vehicles', 'driverLicenses', 'user', 'vehiclePhotos')->where([
+            ['drivers.id', '=', $driver_id],
             // ['drivers.status','=',1],
         ])->get();
         // dd($drivers);
@@ -92,38 +92,52 @@ class DriverController extends Controller
 
     public function approveDriver($driver_id)
     {
-        $user_id =Driver::where('id',$driver_id)->pluck('user_id')->first();
-        Driver::where('id',$driver_id)->update([
-            'status'=>1
+        $user_id = Driver::where('id', $driver_id)->pluck('user_id')->first();
+        Driver::where('id', $driver_id)->update([
+            'status' => 1
         ]);
-        User::where('id',$user_id)->update([
-            'status'=>1
+        User::where('id', $user_id)->update([
+            'status' => 1
         ]);
-        return redirect()->route('driver.index')->with(['success'=>'Driver Approved']);
+        return redirect()->route('driver.index')->with(['success' => 'Driver Approved']);
     }
 
     public function movementsMapmarker($driver_id)
     {
         $driverLocation = DriverMovement::where('driver_id', $driver_id)->get();
-        $map_markes = array ();
+        $map_markes = array();
         foreach ($driverLocation as $key => $location) {
             $map_markes[] = (object)array(
                 'lng' => $location->longitude,
                 'lat' => $location->latitude,
             );
         }
+        // dd($map_markes);
         return response()->json($map_markes);
-
     }
     public function movements($driver_id)
     {
 
- $drivers = Driver::with( 'user')->where([
-            ['drivers.id','=',$driver_id],
+        $drivers = Driver::with('user')->where([
+            ['drivers.id', '=', $driver_id],
             // ['drivers.status','=',1],
         ])->get();
         // dd($drivers);
-        return view('driver.movements',compact('drivers'));
+        return view('driver.movements', compact('drivers'));
+    }
+    public function campaignMovements($driver_id, $campaign_id)
+    {
+        $distanceController = new DistanceController();
 
+        $campaign_name = Campaign::where('id', $campaign_id)->pluck('name')->first();
+        $driverusers = User::with('drivers')->where([
+            ['users.id', '=', $driver_id],
+            // ['drivers.status','=',1],
+            ])->get();
+            // dd($driverusers);
+            $driver_id = Driver::where('user_id', $driver_id)->pluck('id')->first();
+            $driverDistanceCoveredInCampaign = $distanceController->getDriverCampaignDistanceCovered($driver_id,$campaign_id);
+        // dd($drivers);
+        return view('driver.campaignmovements', compact('driverusers', 'driver_id', 'campaign_id', 'campaign_name','driverDistanceCoveredInCampaign'));
     }
 }
