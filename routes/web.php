@@ -67,6 +67,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 	Route::get('/getmonths', [ChartController::class, 'getMonths'])->name('getMonths');
+	Route::get('/getDays', [ChartController::class, 'getDays'])->name('getDays');
+	Route::get('/getMonthlyCampaignDistance/{campaign_id}', [ChartController::class, 'getMonthlyCampaignDistance'])->name('getMonthlyCampaignDistance');
+	Route::get('/getDailyCampaignDistance/{campaign_id}', [ChartController::class, 'getDailyCampaignDistance'])->name('getDailyCampaignDistance');
 	Route::get('/getMonthlyCompletedOrdersCount', 'ChartController@getMonthlyCompletedOrdersCount')->name('getMonthlyCompletedOrdersCount');
 	Route::get('/getMonthlyCancelledOrdersCount', 'ChartController@getMonthlyCancelledOrdersCount')->name('getMonthlyCancelledOrdersCount');
 	Route::get('/getMonthlyReturnOrdersCount', 'ChartController@getMonthlyReturnOrdersCount')->name('getMonthlyReturnOrdersCount');

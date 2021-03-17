@@ -59,7 +59,7 @@
     <script src="/assets/js/map-js/custom.js"></script>
 </head>
 
-<body onload="initialize()">
+<body>
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -101,6 +101,11 @@
     <script src="/assets/js/config.js"></script>
     <!-- Plugins JS start-->
     <script src="/assets/js/sidebar-menu.js"></script>
+
+    <script src="/assets/js/chart/chartjs/chart.min.js"></script>
+    <script src="/assets/js/chart/chartjs/chart.custom.js"></script>
+    <script src="/assets/js/chart/google/google-chart-loader.js"></script>
+    <script src="/assets/js/chart/google/google-chart.js"></script>
     <script src="/assets/js/chart/chartist/chartist.js"></script>
     <script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
     <script src="/assets/js/chart/knob/knob.min.js"></script>
@@ -127,6 +132,7 @@
     <script src="/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
     <script src="/assets/js/datatable/datatables/datatable.custom.js"></script>
     <!-- Plugins JS Ends-->
+
     <!-- Theme js-->
     <script src="/assets/js/script.js"></script>
     <script src="/assets/js/theme-customizer/customizer.js"></script>

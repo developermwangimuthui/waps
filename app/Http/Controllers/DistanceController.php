@@ -33,6 +33,38 @@ class DistanceController extends Controller
             }
         }
     }
+    public function getMonthlyCampaignDistanceCovered($campaign_id,$month)
+    {
+        $distance = [];
+        $latitudesCount = TravelHistory::pluck('latitude')->count();
+        $latitudes = TravelHistory::whereMonth('updated_at', $month)->where('campaign_id', $campaign_id)->pluck('latitude');
+
+        // dd($latitudes);
+        $longitude = TravelHistory::whereMonth('updated_at', $month)->where('campaign_id', $campaign_id)->pluck('longitude');
+
+        for ($i = 0; $i < sizeof($latitudes) - 1; $i++) {
+
+            $distance[] = $this->distance($latitudes[$i], $longitude[$i], $latitudes[$i + 1], $longitude[$i + 1], "K");
+        }
+        $distance_covered = array_sum ($distance);
+        return $distance_covered;
+    }
+    public function getDailyCampaignDistanceCovered($campaign_id,$day)
+    {
+        $distance = [];
+        $latitudesCount = TravelHistory::pluck('latitude')->count();
+        $latitudes = TravelHistory::whereMonth('updated_at', $day)->where('campaign_id', $campaign_id)->pluck('latitude');
+
+        // dd($latitudes);
+        $longitude = TravelHistory::whereMonth('updated_at', $day)->where('campaign_id', $campaign_id)->pluck('longitude');
+
+        for ($i = 0; $i < sizeof($latitudes) - 1; $i++) {
+
+            $distance[] = $this->distance($latitudes[$i], $longitude[$i], $latitudes[$i + 1], $longitude[$i + 1], "K");
+        }
+        $distance_covered = array_sum ($distance);
+        return $distance_covered;
+    }
     public function getCampaignDistanceCovered($campaign_id)
     {
         $distance = [];
