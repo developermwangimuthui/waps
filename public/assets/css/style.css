@@ -11994,6 +11994,21 @@ p.data-attributes svg {
   width: 100%; }
   .dash-map #CheatMap .gmnoprint {
     display: none; }
+.dash-map #CrouteMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #CrouteMap .gmnoprint {
+    display: none; }
+.dash-map #DMrouteMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #DMrouteMap .gmnoprint {
+    display: none; }
+.dash-map #DCMrouteMap {
+  height: 300px;
+  width: 100%; }
+  .dash-map #DCMrouteMap .gmnoprint {
+    display: none; }
 
 .monthly-visit {
   margin: -4px 0 -35px; }

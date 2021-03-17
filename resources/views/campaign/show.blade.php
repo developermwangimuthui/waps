@@ -88,36 +88,36 @@
                                                 data-clipboard-target="#example-head" title="Copy"><i
                                                     class="icofont icofont-copy-alt"></i></button>
                                             <pre><code class="language-html" id="example-head">&lt;!-- Cod Box Copy begin --&gt;
-                                                                                                            &lt;div class=&quot;card o-hidden&quot;&gt;
-                                                                                                            &lt;div class=&quot;card-header card-no-border&quot;&gt;
-                                                                                                            &lt;div class=&quot;card-header-right&quot;&gt;
-                                                                                                            &lt;ul class=&quot;list-unstyled card-option&quot;&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;fa fa-spin fa-cog&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;view-html fa fa-code&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-maximize full-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-minus minimize-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-refresh reload-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-error close-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                            &lt;/ul&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;div class=&quot;media&quot;&gt;
-                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
-                                                                                                              &lt;p&gt;&lt;span class=&quot;f-w-500 font-roboto&quot;&gt;Month Total sale&lt;/span&gt;&lt;span class=&quot;f-w-700 font-primary ml-2&quot;&gt;79.21%&lt;/span&gt;&lt;/p&gt;
-                                                                                                              &lt;h4 class=&quot;f-w-500 mb-0 f-26&quot;&gt;$&lt;span class=&quot;counter&quot;&gt;3465.56&lt;/span&gt;&lt;/h4&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;div class=&quot;card-body p-0&quot;&gt;
-                                                                                                            &lt;div class=&quot;media&quot;&gt;
-                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
-                                                                                                              &lt;div class=&quot;profit-card&quot;&gt;
-                                                                                                                &lt;div id=&quot;spaline-chart&quot;&gt;&lt;/div&gt;
-                                                                                                              &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;!-- Cod Box Copy end --&gt; </code></pre>
+                                                                                                                            &lt;div class=&quot;card o-hidden&quot;&gt;
+                                                                                                                            &lt;div class=&quot;card-header card-no-border&quot;&gt;
+                                                                                                                            &lt;div class=&quot;card-header-right&quot;&gt;
+                                                                                                                            &lt;ul class=&quot;list-unstyled card-option&quot;&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;fa fa-spin fa-cog&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;view-html fa fa-code&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-maximize full-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-minus minimize-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-refresh reload-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-error close-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                            &lt;/ul&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;div class=&quot;media&quot;&gt;
+                                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
+                                                                                                                              &lt;p&gt;&lt;span class=&quot;f-w-500 font-roboto&quot;&gt;Month Total sale&lt;/span&gt;&lt;span class=&quot;f-w-700 font-primary ml-2&quot;&gt;79.21%&lt;/span&gt;&lt;/p&gt;
+                                                                                                                              &lt;h4 class=&quot;f-w-500 mb-0 f-26&quot;&gt;$&lt;span class=&quot;counter&quot;&gt;3465.56&lt;/span&gt;&lt;/h4&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;div class=&quot;card-body p-0&quot;&gt;
+                                                                                                                            &lt;div class=&quot;media&quot;&gt;
+                                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
+                                                                                                                              &lt;div class=&quot;profit-card&quot;&gt;
+                                                                                                                                &lt;div id=&quot;spaline-chart&quot;&gt;&lt;/div&gt;
+                                                                                                                              &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;!-- Cod Box Copy end --&gt; </code></pre>
                                         </div>
                                     </div>
                                 </div>
@@ -148,32 +148,32 @@
                                                 data-clipboard-target="#example-head1" title="Copy"><i
                                                     class="icofont icofont-copy-alt"></i></button>
                                             <pre><code class="language-html" id="example-head1">&lt;!-- Cod Box Copy begin --&gt;
-                                                                                                            &lt;div class=&quot;card o-hidden&quot;&gt;
-                                                                                                            &lt;div class=&quot;card-header card-no-border&quot;&gt;
-                                                                                                            &lt;div class=&quot;card-header-right&quot;&gt;
-                                                                                                            &lt;ul class=&quot;list-unstyled card-option&quot;&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;fa fa-spin fa-cog&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;view-html fa fa-code&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-maximize full-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-minus minimize-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-refresh reload-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-error close-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
-                                                                                                            &lt;/ul&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;div class=&quot;media&quot;&gt;
-                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
-                                                                                                              &lt;p&gt;&lt;span class=&quot;f-w-500 font-roboto&quot;&gt;Month Total visits&lt;/span&gt;&lt;span class=&quot;f-w-700 font-primary ml-2&quot;&gt;95.56%&lt;/span&gt;&lt;/p&gt;
-                                                                                                              &lt;h4 class=&quot;f-w-500 mb-0 f-26&quot;&gt;$&lt;span class=&quot;counter&quot;&gt;5,953&lt;/span&gt;&lt;/h4&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;div class=&quot;card-body pt-0&quot;&gt;
-                                                                                                            &lt;div class=&quot;monthly-visit&quot;&gt;
-                                                                                                             &lt;div id=&quot;column-chart&quot;&gt;&lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;/div&gt;
-                                                                                                            &lt;!-- Cod Box Copy end --&gt;</code></pre>
+                                                                                                                            &lt;div class=&quot;card o-hidden&quot;&gt;
+                                                                                                                            &lt;div class=&quot;card-header card-no-border&quot;&gt;
+                                                                                                                            &lt;div class=&quot;card-header-right&quot;&gt;
+                                                                                                                            &lt;ul class=&quot;list-unstyled card-option&quot;&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;fa fa-spin fa-cog&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;view-html fa fa-code&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-maximize full-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-minus minimize-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-refresh reload-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                              &lt;li&gt;&lt;i class=&quot;icofont icofont-error close-card&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+                                                                                                                            &lt;/ul&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;div class=&quot;media&quot;&gt;
+                                                                                                                            &lt;div class=&quot;media-body&quot;&gt;
+                                                                                                                              &lt;p&gt;&lt;span class=&quot;f-w-500 font-roboto&quot;&gt;Month Total visits&lt;/span&gt;&lt;span class=&quot;f-w-700 font-primary ml-2&quot;&gt;95.56%&lt;/span&gt;&lt;/p&gt;
+                                                                                                                              &lt;h4 class=&quot;f-w-500 mb-0 f-26&quot;&gt;$&lt;span class=&quot;counter&quot;&gt;5,953&lt;/span&gt;&lt;/h4&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;div class=&quot;card-body pt-0&quot;&gt;
+                                                                                                                            &lt;div class=&quot;monthly-visit&quot;&gt;
+                                                                                                                             &lt;div id=&quot;column-chart&quot;&gt;&lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;/div&gt;
+                                                                                                                            &lt;!-- Cod Box Copy end --&gt;</code></pre>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@
                             </div>
                             <div class="card-body pt-0">
                                 <div class="dash-map">
-                                    <div id="heat-map"></div>
+                                    <div id="CrouteMap"></div>
                                 </div>
 
                             </div>
@@ -389,6 +389,7 @@
 
         function initMap() {
             heatMap();
+            routeMap();
 
         }
 
@@ -410,14 +411,14 @@
 
                                 center: new google.maps.LatLng(data[0].lat, data[0].lng),
                                 zoom: 12,
-                                mapTypeId: 'hybrid'
+                                mapTypeId: 'roadmap'
                             });
                         var heatmap = new google.maps.visualization.HeatmapLayer({
                             data: heatmapData
                         });
                         heatmap.setMap(map);
 
-                        console.log("Heatmap"+heatmapData);
+                        // console.log("Heatmap" + heatmapData);
                     } else {
                         $('#CheatMap').append("<p>No data found </p>")
 
@@ -431,6 +432,70 @@
         }
 
 
+        function routeMap() {
+
+            $.ajax({
+                url: "/campaignMapMarker/" + campaign_id,
+                success: function(data) {
+                    if (data != null) {
+
+                        var map;
+                        var poly;
+                        var path;
+                        var locations = [];
+
+                        // Put all locations into array
+                        for (var i = 0; i < data.length; i++) {
+                            locations.push([data[i].lat, data[i].lng]);
+
+                        }
+
+                        console.log("locations" + locations.length);
+
+                        for (i = 0; i < locations.length; i++) {
+                            if (i == 0) {
+                                // Initialise the map
+                                var map_options = {
+                                    center: new google.maps.LatLng(locations[0][0], locations[0][1]),
+                                    //position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                                    zoom: 10,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+
+                                map = new google.maps.Map(document.getElementById('CrouteMap'), map_options);
+                                poly = new google.maps.Polyline({
+                                    strokeColor: '#FFCCFF',
+                                    strokeOpacity: 2.0,
+                                    strokeWeight: 10,
+                                    map: map
+                                });
+                                path = poly.getPath();
+                            }
+
+                            var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                                //center:location,
+                                map: map,
+                                // icon: 'jeep.png'
+                                //animation:google.maps.Animation.BOUNCE
+                            });
+
+                            path.push(new google.maps.LatLng(locations[i][0], locations[i][1]));
+                        }
+
+
+
+
+
+
+                    } else {
+                        $('#CheatMap').append("<p>No data found </p>")
+
+                    }
+                }
+            });
+
+        }
 
     </script>
 
