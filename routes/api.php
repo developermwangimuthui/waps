@@ -33,6 +33,6 @@ Route::prefix('v1')->group(function () {
         //............................Distance Calculation.................................//
 
         Route::get('/getCampaignDistanceCovered/{campaign_id}', [DistanceController::class, 'getCampaignDistanceCovered'])->name('getCampaignDistanceCovered');
-        Route::get('/getDriverCampaignDistanceCovered/{driver_id}', [DistanceController::class, 'getDriverCampaignDistanceCovered'])->name('getDriverCampaignDistanceCovered');
+        Route::get('/getDriverCampaignDistanceCoveredApi', [DistanceController::class, 'getDriverCampaignDistanceCoveredApi'])->name('getDriverCampaignDistanceCoveredApi');
     });
 });
